@@ -1,4 +1,4 @@
-  <nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
           <div class="navbar-header">
               <?php echo $this->Html->image('prueba_90x80.png', array('alt' => 'S.A.H'))?>
@@ -37,8 +37,8 @@
                )); ?>
             </div>
             <div class="form-group">          
-                <?php  echo $this->Form->submit('Login', array(
-                'class' => 'btn btn-default',
+                <?php  echo $this->Form->submit('Login', array(     
+                'class' => 'btn btn-primary',
                 )); 
                 echo $this->Form->end();
                 echo $this->Html->link(false ,array('action'=>'add'));

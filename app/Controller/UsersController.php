@@ -1,6 +1,5 @@
 <?php
 class UsersController extends AppController {
-   
     public function getUsername(){
         return $this->Auth->user('username');
     }
