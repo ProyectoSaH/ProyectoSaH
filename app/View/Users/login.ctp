@@ -37,9 +37,8 @@
                )); ?>
             </div>
             <div class="form-group">          
-                <?php  echo $this->Form->submit('Login', array(     
-                'class' => 'btn btn-primary',
-                )); 
+                <button type="submit" class="btn btn-primary">Login</button>
+                <?php
                 echo $this->Form->end();
                 echo $this->Html->link(false ,array('action'=>'add'));
                 ?>
