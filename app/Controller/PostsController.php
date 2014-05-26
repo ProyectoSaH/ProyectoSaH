@@ -12,6 +12,32 @@ class PostsController extends AppController{
 		$this->Post->id = $id;
 		$this->set('post', $this->Post->read());
 	}
+        
+        public function calendar2($id = null){
+            $this->set('posts',$this->Post->find('all'));
+		
+	}
+        
+        public function feed(){
+       $rows = array();
+        for ($a=0; count($events)> $a; $a++) {
+            
+        $rows[] = array('id' => $events[$a]['Event']['id'],
+        'title' => $events[$a]['Event']['title'],
+        'start' => date('Y-m-d H:i', strtotime($events[$a]['Event']['start'])),
+        'end' => date('Y-m-d H:i',strtotime($events[$a]['Event']['end'])),
+        'allDay' => $all,
+        );
+        }
+
+        //4. Return as a json array
+        Configure::write('debug', 0);
+        $this->autoRender = false;
+        $this->autoLayout = false;
+        $this->header('Content-Type: application/json');
+        echo json_encode($rows);
+        }
+
 
 	public function add(){
             echo 'dsads';

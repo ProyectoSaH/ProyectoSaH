@@ -44,7 +44,7 @@
                 echo $this->Html->link(false ,array('action'=>'add'));
                 ?>
            </div> 
-        </div>
+                   </div>
    
 </nav>
 <br>
@@ -58,7 +58,7 @@
 		<div id="games">
 
 			<a href="http://www.minininjas.com/" target="_blank">
-				<?php echo $this->Html->image('happy-woman.jpg')?>
+				<?php echo $this->Html->image('woman.jpg')?>
 				<span>
 					<b>Agenda Citas</b><br />
 					Usted puede mantener todas sus citas en orden, gracias al sistema de atención de horarios 
