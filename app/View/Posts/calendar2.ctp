@@ -20,9 +20,9 @@
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
-			defaultDate: '2014-01-12',
+			defaultDate: '2014-03-12',
 			editable: false,
-			events: "events/feed"
+			events: '../posts/feed'
 				
 		});
 		

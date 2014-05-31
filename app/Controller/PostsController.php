@@ -2,6 +2,7 @@
 
 class PostsController extends AppController{
 	public $helpers = array('Html','Form');
+        public $components = array('RequestHandler');
 
 
 	public function index(){
@@ -14,19 +15,30 @@ class PostsController extends AppController{
 	}
         
         public function calendar2($id = null){
-            $this->set('posts',$this->Post->find('all'));
+            $this->Post->id = $id;
+            $this->set('post',$this->Post->find('all'));
 		
 	}
+        public function feed(){  
+        $this->set('posts',$this->Post->find('all'));
+        $rows[] = array('id'=>'1',
+                        'title'=>'prova',
+                        'start'=>'2014-03-19 21:00:00',
+                        'end'=> '2014-03-19');
+        Configure::write('debug', 0);
+        $this->autoRender = false;
+        $this->autoLayout = false;
+        $this->header('Content-Type: application/json');
+        echo json_encode($rows);       
+        }
         
-        public function feed(){
+         public function feede(){
        $rows = array();
-        for ($a=0; count($events)> $a; $a++) {
+        for ($a=0; count($posts)> $a; $a++) {
             
-        $rows[] = array('id' => $events[$a]['Event']['id'],
-        'title' => $events[$a]['Event']['title'],
-        'start' => date('Y-m-d H:i', strtotime($events[$a]['Event']['start'])),
-        'end' => date('Y-m-d H:i',strtotime($events[$a]['Event']['end'])),
-        'allDay' => $all,
+        $rows[] = array('title' => $posts[$a]['Post']['title'],
+        'start' => $posts[$a]['Post']['start'],
+        'end' => $posts[$a]['Post']['end'],
         );
         }
 

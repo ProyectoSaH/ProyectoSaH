@@ -32,7 +32,9 @@
 					start: '2014-01-09T16:00:00'
 				},
 				{
-					id: 999,
+					
+                                        
+                                        
 					title: 'Repeating Event',
 					start: '2014-01-16T16:00:00'
 				},

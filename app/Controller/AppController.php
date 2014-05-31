@@ -31,7 +31,8 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    public $components = array(    
+    public $components = array(
+    'RequestHandler',    
     'Session',
     'Auth' => array(
         'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
@@ -44,6 +45,7 @@ class AppController extends Controller {
 // only allow the login controllers only
 public function beforeFilter() {
     $this->Auth->allow('login');
+     $this->RequestHandler->setContent('json', 'text/x-json');
 }
  
 public function isAuthorized($user) {

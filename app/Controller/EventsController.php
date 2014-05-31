@@ -10,7 +10,12 @@ class EventsController extends AppController {
             $this->set('events',$this->Event->find('all'));
 		
 	}
+         public function calendar($id = null){
+            $this->set('events',$this->Event->find('all'));
+		
+	}
       public function feed(){
+          
             $events = $this->Event->find('all');
             $rows = array();
             for ($a=0; count($events)> $a; $a++) {
@@ -27,6 +32,13 @@ class EventsController extends AppController {
             $this->header('Content-Type: application/json');
             echo json_encode($rows);
         
+      }
+      public function feede(){
+    
+           $res[] = array('title'=>'prova','start'=>'2014-03-22 21:00:00');
+           //return new CakeResponse(array('body'=>json_encode($res)));
+           echo json_encode($res);
+
       }
         
 }

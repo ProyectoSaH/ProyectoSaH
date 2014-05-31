@@ -9,33 +9,6 @@
 <script src='../lib/jquery.min.js'></script>
 <script src='../lib/jquery-ui.custom.min.js'></script>
 <script src='../js/fullcalendar.min.js'></script>
-<!-- File: /app/View/Posts/index.ctp -->
-
-<h1>Blog posts</h1>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Fecha Inicio</th>
-        <th>Fecha Termino</th>
-    </tr>
-
-    <!-- Here is where we loop through our $posts array, printing out post info -->
-
-    <?php foreach ($events as $event): ?>
-    <tr>
-        <td><?php echo $event['Event']['id']; ?></td>
-        <td>
-            <?php echo $event['Event']['title'];?>
-        </td>
-        <td><?php echo $event['Event']['start']; ?></td>
-        <td><?php echo $event['Event']['end']; ?></td>
-    </tr>
-    <?php endforeach; ?>
-<?php
-echo $javascript->object($events);
-?>
-</table>
 <script>
 
 	$(document).ready(function() {
@@ -47,9 +20,10 @@ echo $javascript->object($events);
 				center: 'title',
 				right: 'month,agendaWeek,agendaDay'
 			},
-			defaultDate: '2014-01-12',
+			defaultDate: '2014-03-12',
 			editable: false,
-			events:"/events/feede"
+			events: 'posts/json/feed'
+				
 		});
 		
 	});
@@ -76,4 +50,6 @@ echo $javascript->object($events);
 	<div id='calendar'></div>
 
 </body>
+
+
 </html>
