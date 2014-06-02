@@ -3,6 +3,7 @@
 class PostsController extends AppController{
 	public $helpers = array('Html','Form');
         public $components = array('RequestHandler');
+        var $name = 'Posts';
 
 
 	public function index(){
@@ -20,11 +21,22 @@ class PostsController extends AppController{
 		
 	}
         public function feed(){  
-        $this->set('posts',$this->Post->find('all'));
-        $rows[] = array('id'=>'1',
+        $posts = $this->Post->find('all');
+        $rows = array();
+        for ($a=0; $a < count($posts) ; $a++){
+             $rows[] = array(
+                    'id' => $posts[$a]['Post']['id'],
+                    'title' => $posts[$a]['Post']['title'],
+                    'start' => $posts[$a]['Post']['start'],
+                    'end' => $posts[$a]['Post']['end'],
+                    'allday' => $posts[$a]['Post']['allday'],
+                    );
+      /*  $rows[] = array('id'=>'1',
                         'title'=>'prova',
                         'start'=>'2014-03-19 21:00:00',
-                        'end'=> '2014-03-19');
+                        'end'=> '2014-03-19 23:00:00');*/
+        
+        }
         Configure::write('debug', 0);
         $this->autoRender = false;
         $this->autoLayout = false;

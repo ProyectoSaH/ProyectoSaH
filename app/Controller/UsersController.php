@@ -7,8 +7,11 @@ class UsersController extends AppController {
 
     public function getSuccess(){
         return $this->Session->check('Auth.User');
-    } 
-    
+        
+    }
+    public function getHola(){
+        return false;
+    }
     public $paginate = array(
         'limit' => 25,
         'conditions' => array('status' => '1'),
@@ -22,11 +25,14 @@ class UsersController extends AppController {
 
     public function login() {
         if($this->Session->check('Auth.User')){
-          $this->redirect(array('action' => 'index'));      
-        }
+            $this->redirect(array('action' => 'index')); 
+          }
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
-                $this->redirect($this->Auth->redirectUrl());
+               // $this->redirect($this->Auth->redirectUrl());
+                if($this->Auth->user('role') == 'admin') $this->redirect(array('action' => 'index')); 
+                if($this->Auth->user('role') == 'client') $this->redirect(array('action' => 'add')); 
+                
             } else {
                 $this->Session->setFlash(__(' username o password Invalidos'));
             }

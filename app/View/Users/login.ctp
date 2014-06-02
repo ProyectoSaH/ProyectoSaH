@@ -57,7 +57,7 @@
 <div class="navbar-left">
 		<div id="games">
 
-			<a href="http://www.minininjas.com/" target="_blank">
+			<a href="http://www.google.com/" target="_blank">
 				<?php echo $this->Html->image('woman.jpg')?>
 				<span>
 					<b>Agenda Citas</b><br />
@@ -66,7 +66,7 @@
 				</span>
 			</a>
 
-			<a href="http://www.princeofpersiagame.com/" target="_blank">
+			<a href="http://www.google.com/" target="_blank">
 				<?php echo $this->Html->image('reloj.jpg')?>
 				<span>
 					<b>Optimice Su Tiempo</b><br />
@@ -74,7 +74,7 @@
 				</span>
 			</a>
 
-			<a href="http://spidermandimensions.marvel.com/" target="_blank">
+			<a href="http://www.google.com/" target="_blank">
 				<?php echo $this->Html->image('value-time.jpg')?>
 				<span>
 					<b>Valora Tu Tiempo</b><br />
@@ -82,7 +82,7 @@
 				</span>
 			</a>
 
-			<a href="http://www.godofwar.com/" target="_blank" >
+			<a href="http://www.google.com/" target="_blank" >
 				<?php echo $this->Html->image('convince.jpg')?>
 				<span>
 					<b>Colaboración</b><br />
@@ -90,7 +90,7 @@
 				</span>
 			</a>
 
-			<a href="http://www.borderlandsthegame.com/" target="_blank">
+			<a href="http://www.google.com/" target="_blank">
 				<?php echo $this->Html->image('agenda.jpg')?>
 				<span>
 					<b>Deja lo viejo</b><br />
@@ -98,7 +98,7 @@
 				</span>
 			</a>
 
-			<a href="http://www.swtor.com/" target="_blank">
+			<a href="http://www.google.com/" target="_blank">
 				<?php echo $this->Html->image('productivity.jpg')?>
 				<span>
 					<b>Aumenta la productividad </b><br/>

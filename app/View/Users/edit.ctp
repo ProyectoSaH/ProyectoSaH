@@ -1,28 +1,3 @@
-<nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-              <?php echo $this->html->image('prueba_90x80.png', array('alt' => 'S.A.H'))?>
-          </div>
-          <div class="navbar-form navbar-left">
-            <br>
-              <ul class="nav nav-tabs">
-                  <li><a href="#">Inicio</a></li>
-                  <li class="active"><a href="#">Perfil</a></li>
-                  <li><a href="#">Mensajes</a></li>
-              </ul>
-          </div>
-         
-        <div class="form-inline navbar-right navbar-form" >
-          <br>
-            <li> <span class="glyphicon glyphicon-user"> </span>
-             <?php echo '&nbsp Bienvenido, ',ucfirst($user_name = $this->requestAction('/users/getUsername'));?> <br>
-           <?php echo $this->Html->link( "Cerrar Sesion",   array('action'=>'logout') ); ?>
-            </li>
-          </div> 
-        </div>
-    </div>       
-  </nav>
-
 <html>
 <head>
     

@@ -3,31 +3,6 @@
 <head>
 </head> 
 <body>
-    
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-              <?php echo $this->html->image('prueba_90x80.png', array('alt' => 'S.A.H'))?>
-          </div>
-          <div class="navbar-form navbar-left"   >
-            <br>
-              <ul class="nav nav-tabs">
-                  <li><a href="#">Inicio</a></li>
-                  <li class="active"><a href="#">Perfil</a></li>
-                  <li><a href="#">Mensajes</a></li>
-              </ul>
-          </div>
-          <br>
-        <div class="form-inline navbar-right navbar-form" >
-               <li> <span class="glyphicon glyphicon-user"> </span>
-          <?php echo '&nbsp Bienvenido, ',ucfirst($this->requestAction('/users/getUsername'));?> <br>
-           <?php echo $this->Html->link( "Cerrar Sesión",   array('action'=>'logout') ); ?>
-            </li>
-        </div> 
-        </div>
-    </div>    
-
-  </nav>
 <h4>&nbsp Lista de Usuarios</h4>
 <div class="panel panel-default">
   <table class="table">
@@ -39,6 +14,7 @@
             <th><?php echo $this->Paginator->sort('created', 'Creado');?></th>
             <th><?php echo $this->Paginator->sort('modified','Last Update');?></th>
             <th><?php echo $this->Paginator->sort('role','Role');?></th>
+            <th><?php echo $this->Paginator->sort('horario','Horario');?></th>
             <th><?php echo $this->Paginator->sort('status','Status');?></th>
             <th>Actions</th>
         </tr>
@@ -55,6 +31,8 @@
             <td><?php echo $user['User']['created']; ?></td>
             <td><?php echo $user['User']['modified']; ?></td>
             <td><?php echo $user['User']['role']; ?></td>
+            <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'posts', 'action' => 'calendar2', '?' => array(
+        'myArgument' => 1 ))); ?></td>
             <td><?php echo $user['User']['status']; ?></td>
             <td >
             <?php echo $this->Html->link(    "Edit",   array('action'=>'edit', $user['User']['id']) ); ?> | 
