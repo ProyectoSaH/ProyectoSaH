@@ -3,10 +3,38 @@
     
 </head>
 <body>
-  <legend> &nbsp Añadir Usuario </legend>
-<?php  echo $this->Form->create('User'); ?>
+  <legend> &nbsp Añadir Cita </legend>
+  <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Datepicker - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+</head>
+<body>
+
+ 
+</body>
+</html>
+<?php  echo $this->Form->create('Calendar'); ?>
 <form class="form-horizontal" role="form">
   <div class= "container-fluid">
+       <div class="form-group">
+           <label for="inputUsername" class="col-sm-1 control-label ">Fecha</label> 
+           <div class="col-sm-2">
+                <input type="text" class="form-control" id="datepicker">
+           </div>
+       </div>
+      
+      
   <div class="form-group">
     <label for="inputUsername" class="col-sm-1 control-label ">Username</label>
     <div class="col-sm-4">

@@ -31,7 +31,7 @@
             <td><?php echo $user['User']['created']; ?></td>
             <td><?php echo $user['User']['modified']; ?></td>
             <td><?php echo $user['User']['role']; ?></td>
-            <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'posts', 'action' => 'calendar2', '?' => array(
+            <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'calendars', 'action' => 'calendar', '?' => array(
         'myArgument' => 1 ))); ?></td>
             <td><?php echo $user['User']['status']; ?></td>
             <td >
