@@ -115,11 +115,10 @@
 <style>
 
 #contenedor1 {
-    /*encadeno los 3 atributos claves del borde en una sola linea, ahorrando codigo XD*/ 
-    width: 50px;
-  
-   /*10px arriba y abajo, y auto a los lados, para los navegadores nuevos es suficiente para centrar la pagina*/ 
-    text-align:right; /*aqui alineamos todo de nuevo a la izquierda, pero dentro del contenedor*/ 
+    clear: both;
+    margin-bottom: 0em;
+    padding: .3em;
+    vertical-align: text-top;
 }
 
 #contenedor {
@@ -133,31 +132,38 @@
 		<div class=" navbar-left" id="contenedor"> </div>
 
 		<div class=" navbar-left" >
-			<nav class="navbar navbar-default" role="navigation">
+                    <nav class="navbar navbar-default" role="navigation" >
 
-			<form role="form">
+			<form role="form"  >
 				<h1>&nbsp&nbspContáctanos <span class="glyphicon glyphicon-envelope "></span></h1>
 
-				<div class="form-group">
-				   	<label for="inputEmail3" class="col-sm-2 control-label">Nombre</label>
+				<div class="form-group" >
+				   	<label for="inputEmail3" class="col-sm-2 control-label">Name</label>
 				  	<div class="col-sm-10">
 				    	<input type="email" class="form-control" id="inputEmail3" placeholder="Nombre">
 					</div>
 				</div>
+                                <br>
 				<div class="form-group">
 				    <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
 				    <div class="col-sm-10">
 				      	<input type="password" class="form-control" id="inputPassword3" placeholder="Email">
 				    </div>
 				</div>
+                                
+                                
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Mensaje</label>
+                                        <br><br>
 				    <div class="col-sm-10">
 				    	<textarea class="form-control" rows="3"></textarea>
 					</div>
 				</div>
+                                <br><br>
 				<div class="form-group">
-				    <div class=" col-sm-10">
+				    <div class= "col-sm-10">
+                                        <p>
+                                            <label class="col-sm-5 control-label">&nbsp</label>
 				      <button type="submit" class="btn btn-primary">Enviar</button>
 				    </div>
 				</div>

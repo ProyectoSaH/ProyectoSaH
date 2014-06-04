@@ -4,6 +4,7 @@ class CalendarsController extends AppController{
 	public $helpers = array('Html','Form');
         public $components = array('RequestHandler');
         var $name = 'Calendars';
+        var $nombreGlobal = 0;
 
 
 	public function index(){
@@ -11,7 +12,14 @@ class CalendarsController extends AppController{
 	}
         
         public function view(){
-           $this->render();
+           if ($this->request->is('post')) {
+            if ($this->Calendar->save($this->request->data)) {
+                $this->Session->setFlash(__('Cita Creada'));
+                $this->redirect(array('action' => 'calendar'));
+            } else {
+                $this->Session->setFlash(__('No se ha podido añadir la cita'));
+            }   
+        }
         }
 
 	public function add_cita(){
@@ -21,13 +29,13 @@ class CalendarsController extends AppController{
         
         public function calendar($id = null){
             $this->Calendar->id = $id;
-            $this->set('calendars',$this->Calendar->find('all'));
 		
 	}
-        public function feed(){  
+        public function feed($id){
         $calendars = $this->Calendar->find('all');
         $rows = array();
         for ($a=0; $a < count($calendars) ; $a++){
+            if( $id == $calendars[$a]['Calendar']['id'] ){
              $rows[] = array(
                     'id' => $calendars[$a]['Calendar']['id'],
                     'title' => $calendars[$a]['Calendar']['title'],
@@ -35,11 +43,13 @@ class CalendarsController extends AppController{
                     'end' => $calendars[$a]['Calendar']['end'],
                     'allday' => $calendars[$a]['Calendar']['allday'],
                     );
-      /*  $rows[] = array('id'=>'1',
+            }
+           /*  
+        $rows[] = array('id'=>'1',
                         'title'=>'prova',
                         'start'=>'2014-03-19 21:00:00',
                         'end'=> '2014-03-19 23:00:00');*/
-        
+          //  }
         }
         Configure::write('debug', 0);
         $this->autoRender = false;

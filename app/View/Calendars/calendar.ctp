@@ -9,9 +9,7 @@
 <script src='../lib/jquery.min.js'></script>
 <script src='../lib/jquery-ui.custom.min.js'></script>
 <script src='../js/fullcalendar.min.js'></script>
-<ul class="nav nav-pills">
-    <li class="active"><a href="http://localhost/cake/calendars/add_cita">Registrar Cita</a></li>
-</ul>
+<?php echo 'Calendario de :'.$_GET['name'];?>
 </nav>    
 <script>
 var newEvent = new Object();
@@ -96,10 +94,15 @@ $(document).ready(function()
 							true // make the event "stick"
                                                                 
 						);
-                                                  
-                                              window.location = 'view?fecha='+start.day()+'/'+start.month()+'/'+start.year()+
-                                                      '&horainicial='+start.hours()+':'+start.minutes()+':00'+'&horafinal='+
-                                                      end.hours()+':'+end.minutes()+':00';          
+                                              var start_min = start.minute();
+                                              var end_min = end.minute();
+                                              if(start.minute()== 0) start_min = "00";
+                                              if(end.minute()== 0)   end_min =   "00"; 
+                                               
+                                              window.location = 'view?title='+title+'&fecha='+start.year()+'-'+(start.month()+1)+'-'+(start.day()+1)+
+                                                      '&horainicial='+start.hours()+':'+start_min+':00'+'&horafinal='+
+                                                      end.hours()+':'+end_min+':00'+'&id='+<?php echo $_GET['id'];?>;  
+                                          
 
 					}
                                         
@@ -114,8 +117,8 @@ $(document).ready(function()
 					events is the main option for calendar.
 					for demo we have added predefined events in json object.
 				*/
-			events: '../calendars/feed'
-			
+			events: '../calendars/feed/ <?php echo $_GET['id'];?>'
+                   
 
 		});
 		

@@ -286,16 +286,21 @@ fieldset fieldset div {
 	margin: 0 20px;
 }
 form div {
-	clear: both;
-	margin-bottom: 1em;
-	padding: .5em;
+	margin-bottom: 0em;
+	padding: .3em;
+	vertical-align: text-top;
+}
+form .hola {
+    clear: both;
+    margin-bottom: 0em;
+	padding: .3em;
 	vertical-align: text-top;
 }
 form .input {
 	color: #444;
 }
 form .required {
-	font-weight: bold;
+	
 }
 form .required label:after {
 	color: #e32;
@@ -304,8 +309,7 @@ form .required label:after {
 }
 form div.submit {
 	border: 0;
-	clear: both;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 label {
 	display: block;
@@ -313,7 +317,7 @@ label {
 	margin-bottom:3px;
 }
 input, textarea {
-	clear: both;
+	
 	font-size: 140%;
 	font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
 	padding: 1%;
@@ -364,7 +368,7 @@ form .submit input[type=submit] {
 	border-color: #2d6324;
 	color: #fff;
 	text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
-	padding: 8px 10px;
+	padding: 0px 10px;
 }
 form .submit input[type=submit]:hover {
 	background: #5BA150;
