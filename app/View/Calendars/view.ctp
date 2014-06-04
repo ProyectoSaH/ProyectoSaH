@@ -3,7 +3,7 @@
     
 </head>
 <body>
-  <legend> &nbsp Registrar Cita </legend>
+  <legend> &nbsp Registrar Cita </legend>        
 <?php  echo $this->Form->create('Calendar'); ?>
 <form class="form-horizontal" role="form">
   <div class= "container-fluid">
@@ -25,7 +25,6 @@
     </div>
       <div class="form-group">
       <label for="inputPassword" class="col-sm-1 control-label">Nombre&nbspEncargado:</label>
-   <?php echo [0]['User']['username'];?>
        <br></br>
     </div>
     <div class="form-group">
