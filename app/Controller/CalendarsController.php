@@ -15,7 +15,9 @@ class CalendarsController extends AppController{
            if ($this->request->is('post')) {
             if ($this->Calendar->save($this->request->data)) {
                 $this->Session->setFlash(__('Cita Creada'));
-                $this->redirect(array('action' => 'calendar'));
+                
+                $this->redirect(array('controller' => 'users',
+                    'action' => 'index'));
             } else {
                 $this->Session->setFlash(__('No se ha podido añadir la cita'));
             }   
@@ -29,13 +31,14 @@ class CalendarsController extends AppController{
         
         public function calendar($id = null){
             $this->Calendar->id = $id;
-		
+
 	}
         public function feed($id){
+            
         $calendars = $this->Calendar->find('all');
         $rows = array();
         for ($a=0; $a < count($calendars) ; $a++){
-            if( $id == $calendars[$a]['Calendar']['id'] ){
+            if( $id == $calendars[$a]['Calendar']['id_user'] ){
              $rows[] = array(
                     'id' => $calendars[$a]['Calendar']['id'],
                     'title' => $calendars[$a]['Calendar']['title'],

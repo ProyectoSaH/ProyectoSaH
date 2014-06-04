@@ -86,10 +86,9 @@
       <?php  echo $this->Form->input('role', array(
             'class' => 'form-control',
             'label' => false,
-            'options' => array( 
-              'admin' => 'Admin', 
-              'assit' => 'Assist', 
-              'client' => 'Client',
+            'options' => array(
+              'admin' => 'Admin',  
+              'empleado' => 'Empleado', 
               
       )));?>
     </div>

@@ -4,6 +4,9 @@ class UsersController extends AppController {
     public function getUsername(){
         return $this->Auth->user('username');
     }
+    public function getRole(){
+        return $this->Auth->user('role');
+    }
 
     public function getSuccess(){
         return $this->Session->check('Auth.User');
@@ -29,10 +32,11 @@ class UsersController extends AppController {
           }
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
-               // $this->redirect($this->Auth->redirectUrl());
-                if($this->Auth->user('role') == 'admin') $this->redirect(array('action' => 'index')); 
-                if($this->Auth->user('role') == 'client') $this->redirect(array('action' => 'add')); 
-                
+               if($this->Auth->user('role')=='admin')$this->redirect($this->Auth->redirectUrl());
+               else $this->redirect(array('controller' => 'calendars', 'action' => 'calendar', '?' => array(
+        'id' => $this->Auth->user('id'),
+         'name' => $this->Auth->user('username')          )));
+               
             } else {
                 $this->Session->setFlash(__(' username o password Invalidos'));
             }
@@ -81,7 +85,7 @@ class UsersController extends AppController {
                 $this->User->id = $id;
                 if ($this->User->save($this->request->data)) {
                     $this->Session->setFlash(__('Se han actualizado los datos'));
-                    $this->redirect(array('action' => 'edit', $id));
+                    $this->redirect(array('action' => 'index'));
                 }else{
                     $this->Session->setFlash(__('No se ha podido actualizar los datos.'));
                 }

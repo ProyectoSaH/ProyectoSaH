@@ -3,7 +3,7 @@
     
 </head>
 <body>
-  <legend> &nbsp Registrar Cita </legend>        
+  <legend> &nbsp Registrar Cita </legend>
 <?php  echo $this->Form->create('Calendar'); ?>
 <form class="form-horizontal" role="form">
   <div class= "container-fluid">
@@ -23,15 +23,13 @@
       </div>
       <br></br>
     </div>
-      <div class="form-group">
-      <label for="inputPassword" class="col-sm-1 control-label">Nombre&nbspEncargado:</label>
-       <br></br>
-    </div>
+   
     <div class="form-group">
       <label for="inputEmail" class="col-sm-1 control-label">Hora&nbspCita:</label>
       <label for="inputEmdail" class="col-sm-2 control-label"><?php echo $_GET['horainicial'].' - '.$_GET['horafinal']?></label>
             <?php echo $this->Form->hidden('start', array('value' =>  $_GET['fecha'].' '.$_GET['horainicial']));?>
             <?php echo $this->Form->hidden('end', array('value' =>  $_GET['fecha'].' '.$_GET['horafinal']));?>
+           <?php echo $this->Form->hidden('id_user', array('value' =>  $_GET['id']));?>
 
       <div class="col-sm-2">
       <p>
@@ -57,6 +55,6 @@
   <?php echo $this->Html->link("Return Index",   array('action'=>'index'),array('escape' => false) ); ?>
 </div>
 
-
+ </div>
 </body>
 </html>

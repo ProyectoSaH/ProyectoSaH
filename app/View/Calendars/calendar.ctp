@@ -9,7 +9,7 @@
 <script src='../lib/jquery.min.js'></script>
 <script src='../lib/jquery-ui.custom.min.js'></script>
 <script src='../js/fullcalendar.min.js'></script>
-<?php echo 'Calendario de :'.$_GET['name'];?>
+<legend> &nbsp <?php echo 'Calendario de '.$_GET['name'];?> </legend>
 </nav>    
 <script>
 var newEvent = new Object();

@@ -3,6 +3,7 @@
 <head>
 </head> 
 <body>
+    <?php $role = $this->requestAction('Users/getRole');?>
 <h4>&nbsp Lista de Usuarios</h4>
 <div class="panel panel-default">
   <table class="table">
@@ -15,11 +16,11 @@
             <th><?php echo $this->Paginator->sort('modified','Last Update');?></th>
             <th><?php echo $this->Paginator->sort('role','Role');?></th>
             <th><?php echo $this->Paginator->sort('horario','Horario');?></th>
-            <th><?php echo $this->Paginator->sort('status','Status');?></th>
-            <th>Actions</th>
+           <?php if($role == 'admin'){ ?> <th>Actions</th> <?php } ?>
         </tr>
     </thead>
     <tbody> 
+         <?php if($role == 'admin'){ ?>
         <?php $count=0; ?>
         <?php foreach($users as $user): ?>                
         <?php $count ++;?>
@@ -34,19 +35,42 @@
             <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'calendars', 'action' => 'calendar', '?' => array(
         'id' => $user['User']['id'],
         'name' => $user['User']['username']))); ?></td>
-            <td><?php echo $user['User']['status']; ?></td>
             <td >
-            <?php echo $this->Html->link(    "Edit",   array('action'=>'edit', $user['User']['id']) ); ?> | 
+          <?php echo $this->Html->link(    "Edit",   array('action'=>'edit', $user['User']['id']) );?> | 
             <?php
                 if( $user['User']['status'] != 0){ 
                     echo $this->Html->link(    "Delete", array('action'=>'delete', $user['User']['id']));}else{
-                    echo $this->Html->link(    "Re-Activate", array('action'=>'activate', $user['User']['id']));
+                   // echo $this->Html->link(    "Re-Activate", array('action'=>'activate', $user['User']['id']));
                     }
             ?>
             </td>
         </tr>
         <?php endforeach; ?>
         <?php unset($user); ?>
+        <?php } ?>
+        
+        
+        <?php if($role != 'admin'){ ?>
+        <?php $count=0; ?>
+        <?php foreach($users as $user): ?>                
+        <?php $count ++;?>
+        <?php if($count % 2): echo '<tr>'; else: echo '<tr class="zebra">' ?>
+        <?php endif; ?>
+        <?php if($user['User']['role']!='admin'){?>
+            <td><?php echo $this->Form->checkbox('User.id.'.$user['User']['id']); ?></td>
+            <td><?php echo $this->Html->link( $user['User']['username']  ,   array('action'=>'edit', $user['User']['id']),array('escape' => false) );?></td>
+            <td><?php echo $user['User']['email']; ?></td>
+            <td><?php echo $user['User']['created']; ?></td>
+            <td><?php echo $user['User']['modified']; ?></td>
+            <td><?php echo $user['User']['role']; ?></td>
+            <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'calendars', 'action' => 'calendar', '?' => array(
+        'id' => $user['User']['id'],
+        'name' => $user['User']['username']))); ?></td>
+        </tr>
+        <?php } ?>
+        <?php endforeach; ?>
+        <?php unset($user); ?>
+        <?php } ?>
     </tbody>
 </div>  
 </table>

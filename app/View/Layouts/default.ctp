@@ -39,7 +39,7 @@ $cakeDescription = __d('cake_dev', 'SAH');
                         <ul class="nav nav-tabs">
                         <li><a href="http://localhost/cake/index">Inicio</a></li>
                         <li class="active"><a href="#">Perfil</a></li>
-                        <li><a href="#">Mensajes</a></li>
+                        <li><a href="#">Generar Informe</a></li>
                         </ul>
                     </div>
                     <div class="form-inline navbar-right navbar-form" >
