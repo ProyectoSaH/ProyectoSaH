@@ -4,7 +4,7 @@ class CalendarsController extends AppController{
 	public $helpers = array('Html','Form');
         public $components = array('RequestHandler');
         var $name = 'Calendars';
-        var $nombreGlobal = 0;
+        public $nombreGlobal = "nada";
 
 
 	public function index(){
@@ -14,27 +14,28 @@ class CalendarsController extends AppController{
         public function view(){
            if ($this->request->is('post')) {
             if ($this->Calendar->save($this->request->data)) {
-                $this->Session->setFlash(__('Cita Creada'));
+               
+                $this->Session->setFlash(__('Cita creada '));  
+                 
                 
-                $this->redirect(array('controller' => 'users',
-                    'action' => 'index'));
+                $this->redirect(array('controller' => 'Users', 'action' => 'index'
+    
+        ));
             } else {
                 $this->Session->setFlash(__('No se ha podido añadir la cita'));
             }   
         }
         }
-
 	public function add_cita(){
 		$this->Calendar->id = $id;
 		$this->set('calendars', $this->Calendar->read());
 	}
         
         public function calendar($id = null){
-            $this->Calendar->id = $id;
-
+            $this->Calendar->id = $id;  
 	}
         public function feed($id){
-            
+          
         $calendars = $this->Calendar->find('all');
         $rows = array();
         for ($a=0; $a < count($calendars) ; $a++){

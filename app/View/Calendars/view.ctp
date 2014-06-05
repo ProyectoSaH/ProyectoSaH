@@ -26,9 +26,15 @@
    
     <div class="form-group">
       <label for="inputEmail" class="col-sm-1 control-label">Hora&nbspCita:</label>
-      <label for="inputEmdail" class="col-sm-2 control-label"><?php echo $_GET['horainicial'].' - '.$_GET['horafinal']?></label>
-            <?php echo $this->Form->hidden('start', array('value' =>  $_GET['fecha'].' '.$_GET['horainicial']));?>
-            <?php echo $this->Form->hidden('end', array('value' =>  $_GET['fecha'].' '.$_GET['horafinal']));?>
+      
+           <?php if($_GET['horainicial'] == $_GET['horafinal']){?>
+      <label for="inputEmdail" class="col-sm-2 control-label"><?php echo $_GET['horainicial'].' - 23:59:59'?></label>
+
+           <?php echo $this->Form->hidden('start', array('value' =>  $_GET['fecha'].' 00:00:00'));?>
+           <?php echo $this->Form->hidden('end', array('value' =>  $_GET['fecha'].' 23:59:59')); } else{?>
+                 <label for="inputEmdail" class="col-sm-2 control-label"><?php echo $_GET['horainicial'].' - '.$_GET['horafinal']?></label>
+           <?php echo $this->Form->hidden('start', array('value' =>  $_GET['fecha'].' '.$_GET['horainicial']));?>
+           <?php echo $this->Form->hidden('end', array('value' =>  $_GET['fecha'].' '.$_GET['horafinal']));}?>
            <?php echo $this->Form->hidden('id_user', array('value' =>  $_GET['id']));?>
 
       <div class="col-sm-2">
@@ -52,7 +58,7 @@
            </div> 
     </div>       
 </form>
-  <?php echo $this->Html->link("Return Index",   array('action'=>'index'),array('escape' => false) ); ?>
+  <?php echo $this->Html->link("Return Index",   array('controller' => 'Users','action'=>'index'),array('escape' => false) ); ?>
 </div>
 
  </div>

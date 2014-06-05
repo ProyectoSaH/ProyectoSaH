@@ -34,8 +34,8 @@ class UsersController extends AppController {
             if ($this->Auth->login()) {
                if($this->Auth->user('role')=='admin')$this->redirect($this->Auth->redirectUrl());
                else $this->redirect(array('controller' => 'calendars', 'action' => 'calendar', '?' => array(
-        'id' => $this->Auth->user('id'),
-         'name' => $this->Auth->user('username')          )));
+                'id' => $this->Auth->user('id'),
+                'name' => $this->Auth->user('username'))));
                
             } else {
                 $this->Session->setFlash(__(' username o password Invalidos'));

@@ -76,7 +76,7 @@
 </table>
     </div>
 <?php echo $this->Paginator->numbers(array(   'class' => 'numbers'     ));?>          
-<?php echo $this->Html->link("Añadir Usuario",   array('action'=>'add'),array('escape' => false) ); ?>
+<?php if($role =='admin') echo $this->Html->link("Añadir Usuario",   array('action'=>'add'),array('escape' => false) ); ?>
  
 </body>
 </html>

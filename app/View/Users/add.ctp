@@ -19,7 +19,6 @@
               )); ?>
     </div>
     <div class="col-sm-3">
-    <p>
 <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
    </div>
      <br></br>
@@ -37,7 +36,6 @@
               )); ?>
     </div>
     <div class="col-sm-2">
-    <p>
 <?php echo $this->Form->error('User.email', null, array('class' => 'error ')); ?>
    </div>
     <br></br>
@@ -54,7 +52,6 @@
               )); ?>
     </div>
     <div class="col-sm-4">
-    <p>
 <?php echo $this->Form->error('User.password', null, array('class' => 'error ')); ?>
    </div>
     <br></br>
@@ -73,7 +70,6 @@
       )); ?>
    </div>
    <div class="col-sm-2">
-    <p>
 <?php echo $this->Form->error('User.password_confirm', null, array('class' => 'error ')); ?>
    </div>
      <br></br>
@@ -91,12 +87,12 @@
   </div>
   <label for="inputRole" class="col-sm-2 control-label">&nbsp</label>
    <div class="form-group">          
-                <?php  echo $this->Form->submit('Confirm', array(
-                'class' => 'btn btn-primary' ,
-                )); 
+              <button type="submit" class="btn btn-primary " id="login">Login</button>
+                <?php
                 echo $this->Form->end();
+                echo $this->Html->link(false ,array('action'=>'index'));
                 ?>
-           </div> 
+           </div>
     </div>       
 </form>
   <?php echo $this->Html->link("Return Index",   array('action'=>'index'),array('escape' => false) ); ?>

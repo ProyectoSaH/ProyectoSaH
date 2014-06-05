@@ -15,7 +15,7 @@ class User extends AppModel {
             'between' => array( 
                 'rule' => array('between', 5, 15), 
                 'required' => true, 
-                'message' => 'Usernames must be between 5 to 15 characters'
+                'message' => 'Username tiene que tener minimo de 5 a 15 caracteres'
             ),
              'unique' => array(
                 'rule'    => array('isUniqueUsername'),
@@ -33,7 +33,7 @@ class User extends AppModel {
             ),
             'min_length' => array(
                 'rule' => array('minLength', '6'),  
-                'message' => 'Password must have a mimimum of 6 characters'
+                'message' => 'Contraseña debe tener a lo menos 6 caracteres'
             )
         ),
          'password_confirm' => array(
@@ -50,7 +50,7 @@ class User extends AppModel {
         'email' => array(
             'required' => array(
                 'rule' => array('email', true),    
-                'message' => 'Please provide a valid email address.'   
+                'message' => 'El email debe ser valido.'   
             ),
              'unique' => array(
                 'rule'    => array('isUniqueEmail'),
@@ -71,7 +71,7 @@ class User extends AppModel {
          'password_update' => array(
             'min_length' => array(
                 'rule' => array('minLength', '6'),   
-                'message' => 'Password must have a mimimum of 6 characters',
+                'message' => 'Contraseña debe tener a lo menos 6 caracteres',
                 'allowEmpty' => true,
                 'required' => false
             )
