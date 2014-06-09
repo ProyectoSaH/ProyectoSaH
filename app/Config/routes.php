@@ -29,6 +29,7 @@
  * ...and connect the rest of 'Pages' controller's URLs.
  */     Router::parseExtensions('json'); 
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+        
         Router::connect('/feed/:id', array('controller' => 'calendars', 'action' => 'feed',array(
           'id' =>'[0-9]+')));
         Router::connect('/index', array('controller' => 'users', 'action' => 'index'));

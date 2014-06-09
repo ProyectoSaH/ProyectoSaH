@@ -81,7 +81,7 @@
             'class' => 'form-control',
             'label' => false,
             'options' => array( 
-            'empleado' => 'Empleado', )));?>
+            'empleado' => 'Assit' )));?>
     </div>
     <br></br>
   </div>

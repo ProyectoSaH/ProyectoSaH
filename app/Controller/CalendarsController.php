@@ -1,5 +1,5 @@
 <?php
-
+ App::import('Model', 'User');
 class CalendarsController extends AppController{
 	public $helpers = array('Html','Form');
         public $components = array('RequestHandler');
@@ -8,34 +8,48 @@ class CalendarsController extends AppController{
 
 
 	public function index(){
-		$this->set('calendars',$this->Calendar->find('all'));
+       /*      App::import('Model', 'User');
+       $user = new User();    
+       $user->id = '1';
+        $this->set('user', $user->read());
+        // $this->set('user',$user->find('all'));*/
+          
+           $user = new User();    
+           $user->findById(1);
+           $user->set('username',array('username' =>'dasasdsad'));
+           $this->User->save($this->request->data('Model.id'));
+           $this->save($this->request->data($user->username));
+           
+           
+           $this->set('user', $user->findById(1));
 	}
         
         public function view(){
-           if ($this->request->is('post')) {
+            $user = new User();
+            $this->set('user', $user->findById($_GET['id']));
+            
+            if ($this->request->is('post')) {
             if ($this->Calendar->save($this->request->data)) {
-               
-                $this->Session->setFlash(__('Cita creada '));  
-                 
-                
-                $this->redirect(array('controller' => 'Users', 'action' => 'index'
-    
-        ));
+               $this->Session->setFlash(__('Cita creada '));  
+               $this->redirect(array('controller' => 'Calendars', 'action' => 'calendar', '?' => array(
+                'id' => $_GET['id'])));   
             } else {
                 $this->Session->setFlash(__('No se ha podido añadir la cita'));
             }   
         }
         }
-	public function add_cita(){
-		$this->Calendar->id = $id;
-		$this->set('calendars', $this->Calendar->read());
+	public function edit(){
+            $this->set('calendar', $this->Calendar->findById($_GET['id']));
+            $user = new User();
+            $this->set('user', $user->findById($_GET['idN']));
 	}
         
-        public function calendar($id = null){
-            $this->Calendar->id = $id;  
+        public function calendar(){
+            $user = new User();
+            $this->set('user', $user->findById($_GET['id']));
+            
 	}
         public function feed($id){
-          
         $calendars = $this->Calendar->find('all');
         $rows = array();
         for ($a=0; $a < count($calendars) ; $a++){

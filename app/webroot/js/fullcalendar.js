@@ -951,7 +951,7 @@ function Calendar(element, instanceOptions) {
 	
 	
 	function getDate() {
-		return date.clone();
+		return date.day();
 	}
 
 

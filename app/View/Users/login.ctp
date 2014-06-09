@@ -54,7 +54,7 @@
 
 	<link rel="stylesheet" href="css/coin-slider-styles.css" type="text/css" />
 <body> 
-<div class="navbar-left">
+<div style="width:600px; margin:0 auto;">
 		<div id="games">
 
 			<a href="http://www.google.com/" target="_blank">
@@ -121,56 +121,17 @@
     vertical-align: text-top;
 }
 
-#contenedor {
-    /*encadeno los 3 atributos claves del borde en una sola linea, ahorrando codigo XD*/ 
-    width: 180px;
-    background-color:#FFF8F0;
-    margin:5px auto; /*10px arriba y abajo, y auto a los lados, para los navegadores nuevos es suficiente para centrar la pagina*/ 
-    text-align:center; /*aqui alineamos todo de nuevo a la izquierda, pero dentro del contenedor*/ 
-}
+#divElement{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -120px;
+    margin-left: -40px;
+
+}​
 </style>
-		<div class=" navbar-left" id="contenedor"> </div>
 
-		<div class=" navbar-left" >
-                    <nav class="navbar navbar-default" role="navigation" >
 
-			<form role="form"  >
-				<h1>&nbsp&nbspContáctanos <span class="glyphicon glyphicon-envelope "></span></h1>
-
-				<div class="form-group" >
-				   	<label for="inputEmail3" class="col-sm-2 control-label">Name</label>
-				  	<div class="col-sm-10">
-				    	<input type="email" class="form-control" id="inputEmail3" placeholder="Nombre">
-					</div>
-				</div>
-                                <br>
-				<div class="form-group">
-				    <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
-				    <div class="col-sm-10">
-				      	<input type="password" class="form-control" id="inputPassword3" placeholder="Email">
-				    </div>
-				</div>
-                                
-                                
-				<div class="form-group">
-					<label class="col-sm-2 control-label">Mensaje</label>
-                                        <br><br>
-				    <div class="col-sm-10">
-				    	<textarea class="form-control" rows="3"></textarea>
-					</div>
-				</div>
-                                <br><br>
-				<div class="form-group">
-				    <div class= "col-sm-10">
-                                        <p>
-                                            <label class="col-sm-5 control-label">&nbsp</label>
-				      <button type="submit" class="btn btn-primary">Enviar</button>
-				    </div>
-				</div>
-			</form>
-		</nav>
-
-		</div>
 		
 
 

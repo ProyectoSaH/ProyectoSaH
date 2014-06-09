@@ -33,8 +33,7 @@
             <td><?php echo $user['User']['modified']; ?></td>
             <td><?php echo $user['User']['role']; ?></td>
             <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'calendars', 'action' => 'calendar', '?' => array(
-        'id' => $user['User']['id'],
-        'name' => $user['User']['username']))); ?></td>
+        'id' => $user['User']['id']))); ?></td>
             <td >
           <?php echo $this->Html->link(    "Edit",   array('action'=>'edit', $user['User']['id']) );?> | 
             <?php
@@ -64,8 +63,7 @@
             <td><?php echo $user['User']['modified']; ?></td>
             <td><?php echo $user['User']['role']; ?></td>
             <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'calendars', 'action' => 'calendar', '?' => array(
-        'id' => $user['User']['id'],
-        'name' => $user['User']['username']))); ?></td>
+        'id' => $user['User']['id']))); ?></td>
         </tr>
         <?php } ?>
         <?php endforeach; ?>

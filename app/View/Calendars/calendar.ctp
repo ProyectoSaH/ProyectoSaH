@@ -9,7 +9,7 @@
 <script src='../lib/jquery.min.js'></script>
 <script src='../lib/jquery-ui.custom.min.js'></script>
 <script src='../js/fullcalendar.min.js'></script>
-<legend> &nbsp <?php echo 'Calendario de ',ucfirst($_GET['name']);?> </legend>
+<legend> &nbsp <?php echo 'Calendario de ',ucfirst($user['User']['username']);?> </legend>
 </nav>    
 <script>
 var newEvent = new Object();
@@ -38,8 +38,17 @@ $(document).ready(function()
 			*/
 			
 			var calendar = $('#calendar').fullCalendar(
+                                
 			{
-				theme: true,
+                            
+                            eventClick: function(calEvent, jsEvent, view) {
+                           
+
+                            $(this).css('border-color', 'red');
+                            window.location = 'edit?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
+                                          
+                            },
+                            theme: true,
                                 /*
 					header option will define our calendar header.
 					left define what will be at left position in calendar
@@ -99,9 +108,9 @@ $(document).ready(function()
                                               if(start.minute()== 0) start_min = "00";
                                               if(end.minute()== 0)   end_min =   "00"; 
                                                
-                                              window.location = 'view?title='+title+'&fecha='+start.year()+'-'+(start.month()+1)+'-'+(start.day()+1)+
-                                                      '&horainicial='+start.hours()+':'+start_min+':00'+'&horafinal='+
-                                                      end.hours()+':'+end_min+':00'+'&id='+<?php echo $_GET['id'];?>;  
+                                              window.location = 'view?title='+title+'&fecha='+start.year()+'-'+(start.month()+1)+'-'+start.date()+
+                                                      '&horainicial='+start.hours()+':'+start_min+'&horafinal='+
+                                                      end.hours()+':'+end_min+'&id='+<?php echo $_GET['id'];?>;  
                                           
 
 					}
