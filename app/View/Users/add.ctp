@@ -8,11 +8,11 @@
 <form class="form-horizontal" role="form">
   <div class= "container-fluid">
   <div class="form-group">
-    <label for="inputUsername" class="col-sm-1 control-label ">Username</label>
-    <div class="col-sm-4">
+    <label for="inputUsername" class="col-sm-1 control-label ">Nombre Usuario</label>
+    <div class="col-sm-3">
       <?php  echo $this->Form->input('username',array(
                   'type' => 'alphanumeric',
-                  'placeholder' => 'Username',
+                  'placeholder' => 'Nombre de usuario',
                   'class' => 'form-control',
                   'label' => false,
                   'error' => false,    
@@ -23,10 +23,73 @@
    </div>
      <br></br>
   </div>
- 
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-1 control-label">Rut</label>
+    <div class="col-sm-3">
+      <?php  echo $this->Form->input('rut',array(
+                  'type' => 'alphanumeric',
+                  'placeholder' => 'Rut (Sin Puntos Ni Guion)',
+                  'class' => 'form-control',
+                  'label' => false,
+                  'error' => false,
+              )); ?>        
+    </div>
+    <div class="col-sm-3">
+      <?php echo $this->Form->error('User.rut', null, array('class' => 'error ')); ?>
+   </div>
+     <br></br>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-1 control-label">Nombres</label>
+    <div class="col-sm-3">
+      <?php  echo $this->Form->input('name',array(
+                  'type' => 'alphanumeric',
+                  'placeholder' => 'Nombres',
+                  'class' => 'form-control',
+                  'label' => false,
+                  'error' => false,
+              )); ?>
+    </div>
+    <div class="col-sm-3">
+<?php echo $this->Form->error('User.name', null, array('class' => 'error ')); ?>
+   </div>
+    <br></br>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-1 control-label">Apellidos</label>
+    <div class="col-sm-3">
+      <?php  echo $this->Form->input('surname',array(
+                  'type' => 'alphanumeric',
+                  'placeholder' => 'Apellidos',
+                  'class' => 'form-control',
+                  'label' => false,
+                  'error' => false,
+              )); ?>
+    </div>
+    <div class="col-sm-3">
+<?php echo $this->Form->error('User.surname', null, array('class' => 'error ')); ?>
+   </div>
+    <br></br>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-1 control-label">Fecha Nacimiento</label>
+    <div class="col-sm-3">
+      <?php  echo $this->Form->input('date_birth',array(
+                  'type' => 'alphanumeric',
+                  'placeholder' => 'Fecha De Nacimiento',
+                  'class' => 'form-control',
+                  'label' => false,
+                  'error' => false,
+              )); ?>
+    </div>
+    <div class="col-sm-3">
+<?php echo $this->Form->error('User.email', null, array('class' => 'error ')); ?>
+   </div>
+    <br></br>
+  </div>
   <div class="form-group">
     <label for="inputEmail" class="col-sm-1 control-label">Email</label>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <?php  echo $this->Form->input('email',array(
                   'type' => 'alphanumeric',
                   'placeholder' => 'Email',
@@ -35,14 +98,14 @@
                   'error' => false,
               )); ?>
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
 <?php echo $this->Form->error('User.email', null, array('class' => 'error ')); ?>
    </div>
     <br></br>
   </div>
   <div class="form-group">
-    <label for="inputPassword" class="col-sm-1 control-label">Password</label>
-    <div class="col-sm-4">
+    <label for="inputPassword" class="col-sm-1 control-label">Contraseña</label>
+    <div class="col-sm-3">
       <?php  echo $this->Form->input('password',array(
                   'type' => 'password',
                   'placeholder' => 'Password',
@@ -51,14 +114,14 @@
                   'error' => false,
               )); ?>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-3">
 <?php echo $this->Form->error('User.password', null, array('class' => 'error ')); ?>
    </div>
     <br></br>
   </div>
    <div class="form-group">
-    <label for="inputpasswordConfirm" class="col-sm-1 control-label">Password Confirm</label>
-    <div class="col-sm-4">
+    <label for="inputpasswordConfirm" class="col-sm-1 control-label">Confirmar Contraseña</label>
+    <div class="col-sm-3">
       <?php  echo $this->Form->input('password_confirm', array(
                   'label' => 'Confirm Password *', 
                   'maxLength' => 255, 
@@ -69,22 +132,22 @@
                   'error' => false,
       )); ?>
    </div>
-   <div class="col-sm-2">
+   <div class="col-sm-3">
 <?php echo $this->Form->error('User.password_confirm', null, array('class' => 'error ')); ?>
    </div>
      <br></br>
   </div>
   <div class="form-group">
-    <label for="inputRole" class="col-sm-1 control-label">Role</label>
-    <div class="col-sm-2">
+    <label for="inputRole" class="col-sm-1 control-label">Rol</label>
+    <div class="col-sm-3">
       <?php  echo $this->Form->input('role', array(
             'class' => 'form-control',
             'label' => false,
             'options' => array( 
-            'empleado' => 'Assit' )));?>
+            'empleado' => 'Empleado' )));?>
     </div>
-    <br></br>
   </div>
+    <br></br>
   <label for="inputRole" class="col-sm-2 control-label">&nbsp</label>
    <div class="form-group">          
               <button type="submit" class="btn btn-primary " id="login">Login</button>
@@ -93,19 +156,9 @@
                 echo $this->Html->link(false ,array('action'=>'index'));
                 ?>
            </div>
-    </div>       
+    </div>   
+    </div>   
 </form>
-  <?php echo $this->Html->link("Return Index",   array('action'=>'index'),array('escape' => false) ); ?>
+<?php echo $this->Html->link("Return Index",   array('action'=>'index'),array('escape' => false) ); ?>
 </div>
-<?php 
-//if($this->Session->check('Auth.User')){
-//echo $this->Html->link( "Return to index",   array('action'=>'index') ); 
-//echo "<br>";
-//echo $this->Html->link( "Logout",   array('action'=>'cerrar sesion') ); 
-//}else{
-//echo $this->Html->link( "Return to Login Screen",   array('action'=>'login') ); 
-//}
-?>
-
 </body>
-</html>

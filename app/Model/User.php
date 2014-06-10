@@ -9,22 +9,79 @@ class User extends AppModel {
         'username' => array(
             'nonEmpty' => array(
                 'rule' => array('notEmpty'),
-                'message' => 'A username is required',
+                'message' => 'Se Requiere ingresar un Nombre de Usuario',
                 'allowEmpty' => false
             ),
             'between' => array( 
                 'rule' => array('between', 5, 15), 
                 'required' => true, 
-                'message' => 'Username tiene que tener minimo de 5 a 15 caracteres'
+                'message' => 'El Nombre De Usuario debe tener minimo de 5 a 15 caracteres'
             ),
              'unique' => array(
                 'rule'    => array('isUniqueUsername'),
-                'message' => 'This username is already in use'
+                'message' => 'El Nombre de usuario ingresado, ya está registrado'
             ),
             'alphaNumericDashUnderscore' => array(
                 'rule'    => array('alphaNumericDashUnderscore'),
                 'message' => 'Username can only be letters, numbers and underscores'
             ),
+        ),
+        'name' => array(
+            'nonEmpty' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Se Requiere ingresar Nombres ',
+                'allowEmpty' => false
+            ),
+            'between' => array( 
+                'rule' => array('between', 5, 15), 
+                'required' => true, 
+                'message' => 'Los Nombres deben tener minimo de 5 a 15 caracteres en total'
+            ),
+            'alphaNumericDashUnderscore' => array(
+                'rule'    => array('alphaNumericDashUnderscore'),
+                'message' => 'Username can only be letters, numbers and underscores'
+            ),
+        ),
+        'surname' => array(
+            'nonEmpty' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Se Requiere ingresar Apellidos',
+                'allowEmpty' => false
+            ),
+            'between' => array( 
+                'rule' => array('between', 5, 15), 
+                'required' => true, 
+                'message' => 'Los Apellidos deben tener minimo de 5 a 15 caracteres en total'
+            ),
+            'alphaNumericDashUnderscore' => array(
+                'rule'    => array('alphaNumericDashUnderscore'),
+                'message' => 'Username can only be letters, numbers and underscores'
+            ),
+        ),
+        'date_birth' => array(
+            'nonEmpty' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Se Requiere ingresar un Nombre de Usuario',
+                'allowEmpty' => false
+            )
+
+        ),
+        'rut' => array(
+            'nonEmpty' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Se Requiere ingresar el rut de Usuario',
+                'allowEmpty' => false
+            ),
+            'between' => array( 
+                'rule' => array('between', 9, 12), 
+                'required' => true, 
+                'message' => 'El Rut Ingresado no es valido'
+            ),
+             'unique' => array(
+                'rule'    => array('isUniqueRut'),
+                'message' => 'El rut ingresado, ya está registrado'
+            ),
+
         ),
         'password' => array(
             'required' => array(
@@ -85,6 +142,10 @@ class User extends AppModel {
         )
     );
      
+
+
+
+
     function isUniqueUsername($check) {
  
         $username = $this->find(
@@ -140,6 +201,33 @@ class User extends AppModel {
             return true; 
         }
     }
+
+    function isUniqueRut($check) {
+ 
+        $rut = $this->find(
+            'first',
+            array(
+                'fields' => array(
+                    'User.id'
+                ),
+                'conditions' => array(
+                    'User.rut' => $check['rut']
+                )
+            )
+        );
+ 
+        if(!empty($rut)){
+            
+
+            if($this->data[$this->alias]['rut'] == $rut['User']['id']){
+                return true; 
+            }else{
+                return false; 
+            }
+        }else{
+            return true; 
+        }
+    }
      
     public function alphaNumericDashUnderscore($check) {
         // $data array is passed using the form field name as the key
@@ -168,6 +256,32 @@ class User extends AppModel {
      */
      public function beforeSave($options = array()) {
         // hash our password
+    $r = $this->data[$this->alias]['rut'];        
+      $r=strtoupper(ereg_replace('\.|,|-','',$r));
+          $sub_rut=substr($r,0,strlen($r)-1);
+      $sub_dv=substr($r,-1);
+          $x=2;
+          $s=0;
+        for ( $i=strlen($sub_rut)-1;$i>=0;$i-- ){
+                     if ( $x >7 ){
+                             $x=2;
+              }
+
+                $s += $sub_rut[$i]*$x;
+                $x++;
+        }
+
+        $dv=11-($s%11);
+                if ( $dv==10 ){
+                $dv='K';
+        }
+                if ( $dv==11 ){
+                $dv='0';
+        }
+        if ( $dv!=$sub_dv ){ 
+            return false;
+        }
+      
         if (isset($this->data[$this->alias]['password'])) {
             $this->data[$this->alias]['password'] = AuthComponent::password($this->data[$this->alias]['password']);
         }
