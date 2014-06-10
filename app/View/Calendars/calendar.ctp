@@ -1,7 +1,12 @@
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset='utf-8' />
+		<link rel="stylesheet" media="all" type="text/css" href="../css/base.css" />		
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.1.0/pure-min.css" />
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		
 <link rel='stylesheet' href='../lib/cupertino/jquery-ui.min.css' />
 <link href='../css/fullcalendar.css' rel='stylesheet' />
 <link href='../css/fullcalendar.print.css' rel='stylesheet' media='print' />
@@ -9,6 +14,9 @@
 <script src='../lib/jquery.min.js'></script>
 <script src='../lib/jquery-ui.custom.min.js'></script>
 <script src='../js/fullcalendar.min.js'></script>
+<script type="text/javascript" src="../js/jquery-impromptu.js"></script>
+
+
 <legend> &nbsp <?php echo 'Calendario de ',ucfirst($user['User']['username']);?> </legend>
 </nav>    
 <script>
@@ -45,7 +53,43 @@ $(document).ready(function()
                            
 
                             $(this).css('border-color', 'red');
-                            window.location = 'edit?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
+
+
+                   var temp = {
+					state: {
+						title: 'Que operación desea hacer?',
+						buttons: { Eliminar: false, Editar: true },
+						focus: 1,
+						submit:function(e,v,m,f){ 
+							if(!v){
+								  window.location = 'delete?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
+							}
+								
+							else {
+
+	                               window.location = 'edit?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
+                                }
+							return false; 
+						}
+					},
+					
+			     }
+				
+				$.prompt(temp,{	
+					classes: {
+						box: '',
+						fade: '',
+						prompt: '',
+						close: '',
+						title: 'lead',
+						message: 'pure-form',
+						buttons: '',
+						button: 'pure-button',
+						defaultButton: 'pure-button-primary'
+					}
+				});
+
+                            
                                           
                             },
                             theme: true,
@@ -83,37 +127,59 @@ $(document).ready(function()
 				select: function(start, end, allDay)
 				{
 
-					/*
-						after selection user will be promted for enter title for event.
-					*/
-					var title = prompt('Event Title:');
+                   var temp = {
+					state: {
+						title: 'Crear Nueva Cita?',
+						buttons: { No: false, Si: true },
+						focus: 1,
+						submit:function(e,v,m,f){ 
+							if(!v)
+								$.prompt.close()
+							else {
+									var title = 'Nueva Cita';                
+									calendar.fullCalendar('renderEvent',
+									{
+										title: title,
+										start: start,
+										end: end
+	                                                               
+									},
+									true // make the event "stick"
+	                                                                
+									);
+	                                var start_min = start.minute();
+	                                var end_min = end.minute();
+	                                if(start.minute()== 0) start_min = "00";
+	                                if(end.minute()== 0)   end_min =   "00"; 
+	                                               
+	                                window.location = 'view?title='+title+'&fecha='+start.year()+'-'+(start.month()+1)+'-'+start.date()+
+	                                                  '&horainicial='+start.hours()+':'+start_min+'&horafinal='+
+	                                                   end.hours()+':'+end_min+'&id='+<?php echo $_GET['id'];?>;  
+                                }
+							return false; 
+						}
+					},
+					
+			     }
+				
+				$.prompt(temp,{	
+					classes: {
+						box: '',
+						fade: '',
+						prompt: '',
+						close: '',
+						title: 'lead',
+						message: 'pure-form',
+						buttons: '',
+						button: 'pure-button',
+						defaultButton: 'pure-button-primary'
+					}
+				});
+					
 					/*
 						if title is enterd calendar will add title and event into fullCalendar.
 					*/
-                                     
-					if (title)
-					{
-						calendar.fullCalendar('renderEvent',
-							{
-								title: title,
-								start: start,
-								end: end
-                                                               
-							},
-							true // make the event "stick"
-                                                                
-						);
-                                              var start_min = start.minute();
-                                              var end_min = end.minute();
-                                              if(start.minute()== 0) start_min = "00";
-                                              if(end.minute()== 0)   end_min =   "00"; 
-                                               
-                                              window.location = 'view?title='+title+'&fecha='+start.year()+'-'+(start.month()+1)+'-'+start.date()+
-                                                      '&horainicial='+start.hours()+':'+start_min+'&horafinal='+
-                                                      end.hours()+':'+end_min+'&id='+<?php echo $_GET['id'];?>;  
-                                          
-
-					}
+                 
                                         
                                               
 					calendar.fullCalendar('unselect');
@@ -136,6 +202,7 @@ $(document).ready(function()
         
 
 </script>
+
 <style>
 
 	body {
@@ -152,9 +219,11 @@ $(document).ready(function()
 
 </style>
 </head>
-<body>
 
 	<div id='calendar'></div>
+
+
+
 
 </body>
 

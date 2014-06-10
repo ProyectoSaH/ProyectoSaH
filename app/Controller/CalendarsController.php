@@ -44,6 +44,14 @@ class CalendarsController extends AppController{
             $this->set('user', $user->findById($_GET['idN']));
 	}
         
+
+  public function delete(){
+    $this->Calendar->id = $_GET['id'];
+    $this->Calendar->delete();
+    $this->redirect(array('controller' => 'Calendars', 'action' => 'calendar', '?' => array(
+                'id' => $_GET['idN']))); 
+
+  }      
         public function calendar(){
             $user = new User();
             $this->set('user', $user->findById($_GET['id']));

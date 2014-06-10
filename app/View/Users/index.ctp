@@ -10,13 +10,13 @@
     <thead>
         <tr>
             <th><?php echo $this->Form->checkbox('all', array('name' => 'CheckAll',  'id' => 'CheckAll')); ?></th>
-            <th><?php echo $this->Paginator->sort('username', 'Username');?>  </th>
-            <th><?php echo $this->Paginator->sort('email', 'E-Mail');?></th>
+            <th><?php echo $this->Paginator->sort('username', 'Nombre de usuario');?>  </th>
+            <th><?php echo $this->Paginator->sort('email', 'Correo');?></th>
             <th><?php echo $this->Paginator->sort('created', 'Creado');?></th>
-            <th><?php echo $this->Paginator->sort('modified','Last Update');?></th>
-            <th><?php echo $this->Paginator->sort('role','Role');?></th>
+            <th><?php echo $this->Paginator->sort('modified','Modificado');?></th>
+            <th><?php echo $this->Paginator->sort('role','Rol');?></th>
             <th><?php echo $this->Paginator->sort('horario','Horario');?></th>
-           <?php if($role == 'admin'){ ?> <th>Actions</th> <?php } ?>
+           <?php if($role == 'admin'){ ?> <th>Acciones</th> <?php } ?>
         </tr>
     </thead>
     <tbody> 
