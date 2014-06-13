@@ -1,6 +1,30 @@
 <html>
 <head>
-    
+  <meta charset="utf-8">
+  <script src="../js/jquery.js" type="text/javascript"></script> 
+  
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+  <script src="../js/datepicker.js"></script>
+  <script src="../js/jquery.Rut.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#date_birth" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      defaultDate: "1/1/1996"
+    });
+  });
+
+  </script>
+    <script type="text/javascript">
+                                    $(document).ready(function(){
+                                      $('#rut').Rut({
+                                          format_on: 'keyup',
+                                      on_error: function(){ alert('El valor ingresado no corresponde a un R.U.T válido.'); }
+                                    });
+                                    })
+   </script>
 </head>
 <body>
   <legend> &nbsp Añadir Usuario </legend>
@@ -28,7 +52,8 @@
     <div class="col-sm-3">
       <?php  echo $this->Form->input('rut',array(
                   'type' => 'alphanumeric',
-                  'placeholder' => 'Rut (Sin Puntos Ni Guion)',
+                  'id' => 'rut',
+                  'placeholder' => 'Rut',
                   'class' => 'form-control',
                   'label' => false,
                   'error' => false,
@@ -75,15 +100,16 @@
     <label for="inputEmail" class="col-sm-1 control-label">Fecha Nacimiento</label>
     <div class="col-sm-3">
       <?php  echo $this->Form->input('date_birth',array(
-                  'type' => 'alphanumeric',
+                  'type' => 'text',
                   'placeholder' => 'Fecha De Nacimiento',
+                  'id' => 'date_birth',
                   'class' => 'form-control',
                   'label' => false,
                   'error' => false,
               )); ?>
     </div>
     <div class="col-sm-3">
-<?php echo $this->Form->error('User.email', null, array('class' => 'error ')); ?>
+<?php echo $this->Form->error('User.date_birth', null, array('class' => 'error ')); ?>
    </div>
     <br></br>
   </div>
@@ -161,4 +187,6 @@
 </form>
 <?php echo $this->Html->link("Return Index",   array('action'=>'index'),array('escape' => false) ); ?>
 </div>
+
+
 </body>

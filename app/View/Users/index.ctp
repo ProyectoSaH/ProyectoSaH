@@ -32,7 +32,7 @@
             <td><?php echo $user['User']['created']; ?></td>
             <td><?php echo $user['User']['modified']; ?></td>
             <td><?php echo $user['User']['role']; ?></td>
-            <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'calendars', 'action' => 'calendar', '?' => array(
+            <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'citas', 'action' => 'calendar', '?' => array(
         'id' => $user['User']['id']))); ?></td>
             <td >
           <?php echo $this->Html->link(    "Edit",   array('action'=>'edit', $user['User']['id']) );?> | 
@@ -62,7 +62,7 @@
             <td><?php echo $user['User']['created']; ?></td>
             <td><?php echo $user['User']['modified']; ?></td>
             <td><?php echo $user['User']['role']; ?></td>
-            <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'calendars', 'action' => 'calendar', '?' => array(
+            <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'citas', 'action' => 'calendar', '?' => array(
         'id' => $user['User']['id']))); ?></td>
         </tr>
         <?php } ?>

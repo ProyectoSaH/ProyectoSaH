@@ -3,9 +3,9 @@
 <script type="text/javascript" src="jquery.min.js"></script>
  <script type="text/javascript" src="../js/DateTimePicker.js"></script>
  
-<legend> &nbsp Editar Cita &nbsp(<?php echo $calendar['Calendar']['id'];?>) </legend>
+<legend> &nbsp Editar Cita &nbsp(<?php echo $calendar['Cita']['id'];?>) </legend>
 
-<?php  echo $this->Form->create('Calendar'); ?>
+<?php  echo $this->Form->create('Cita'); ?>
 <form class="form-horizontal" role="form">
   <div class= "container-fluid">
        <div class="form-group">  
@@ -22,7 +22,7 @@
             'class' => 'form-control ',
             'label' => false,
             'data-field' => 'datetime',
-            'value' => $calendar['Calendar']['title']
+            'value' => $calendar['Cita']['title']
             
           
        ));?>
@@ -37,7 +37,7 @@
             'class' => 'form-control ',
             'label' => false,
             'data-field' => 'datetime',
-            'value' => $calendar['Calendar']['start']
+            'value' => $calendar['Cita']['start']
             
           
        ));?>
@@ -52,7 +52,7 @@
             'class' => 'form-control ',
             'label' => false,
             'data-field' => 'datetime',
-            'value' => $calendar['Calendar']['end']
+            'value' => $calendar['Cita']['end']
             
           
        ));?>

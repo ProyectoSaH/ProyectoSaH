@@ -5,7 +5,7 @@
 <body>
   <legend> &nbsp Registrar Cita </legend>
   
-<?php  echo $this->Form->create('Calendar'); ?>
+<?php  echo $this->Form->create('Cita'); ?>
 <form class="form-horizontal" role="form">
   <div class= "container-fluid">
      <div class="form-group">  

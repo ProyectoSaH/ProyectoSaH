@@ -10,7 +10,7 @@
 
     <!-- Here is where we loop through our $posts array, printing out post info -->
      
-    <h1><?php echo $user['User']['username']?></h1>
+    <h1><?php echo $registrar[0]['Registra']['id_users']?></h1>
     <?php// foreach($user as $users): ?> 
     <?php //echo $user['User']['username'];?>
      <?php //endforeach; ?>

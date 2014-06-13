@@ -30,7 +30,7 @@
  */     Router::parseExtensions('json'); 
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
         
-        Router::connect('/feed/:id', array('controller' => 'calendars', 'action' => 'feed',array(
+        Router::connect('/feed/:id', array('controller' => 'citas', 'action' => 'feed',array(
           'id' =>'[0-9]+')));
         Router::connect('/index', array('controller' => 'users', 'action' => 'index'));
         Router::connect('/login', array('controller' => 'users', 'action' => 'login'));

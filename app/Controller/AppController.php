@@ -36,6 +36,7 @@ class AppController extends Controller {
     'RequestHandler',    
     'Session',
     'Auth' => array(
+        'autoRedirect' => false,
         'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
         'logoutRedirect' => array('controller' => 'users', 'action' => 'login'),
         'authError' => 'You must be logged in to view this page.',

@@ -8,23 +8,38 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script src="../js/jquery.js" type="text/javascript"></script> 
+  
   <title>jQuery UI Datepicker - Default functionality</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+  <script src="../js/jquery.Rut.js" type="text/javascript"></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script>
   $(function() {
-    $( "#datepicker" ).datepicker();
+    $( "#datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
   });
+
   </script>
+    <script type="text/javascript">
+                                    $(document).ready(function(){
+                                      $('#rut').Rut({
+                                          format_on: 'keyup',
+                                      on_error: function(){ alert('El valor ingresado no corresponde a un R.U.T válido.'); }
+                                    });
+                                    })
+   </script>
 </head>
 <body>
 
- 
+ <?php echo $user['User']['username']; ?>
 </body>
 </html>
-<?php  echo $this->Form->create('Calendar'); ?>
+<?php  echo $this->Form->create('Cita'); ?>
 <form class="form-horizontal" role="form">
   <div class= "container-fluid">
        <div class="form-group">
@@ -38,9 +53,10 @@
   <div class="form-group">
     <label for="inputUsername" class="col-sm-1 control-label ">Username</label>
     <div class="col-sm-4">
-      <?php  echo $this->Form->input('username',array(
+      <?php  echo $this->Form->input('rut',array(
                   'type' => 'alphanumeric',
-                  'placeholder' => 'Username',
+                  'placeholder' => 'rut',
+                  'id' => 'rut',
                   'class' => 'form-control',
                   'label' => false,
                   'error' => false,    

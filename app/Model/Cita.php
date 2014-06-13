@@ -1,6 +1,6 @@
 <?php
-class Calendar extends AppModel{
-	public $name = 'Calendar';
+class Cita extends AppModel{
+	public $name = 'Cita';
         public $validate = array(
         'title' => array(
             'nonEmpty' => array(
