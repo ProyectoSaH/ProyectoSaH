@@ -1,6 +1,7 @@
 <?php
 App::uses('AuthComponent', 'Controller/Component');
  
+// 1234567 : 79c7919b65a06801bb77c060b1b9f2ab64439cb5
 class User extends AppModel {
      
     public $avatarUploadDir = 'img/avatars';

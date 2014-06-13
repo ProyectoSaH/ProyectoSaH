@@ -1,6 +1,11 @@
 <?php
  App::import('Model', 'User');
- App::import('Model', 'Registra');
+ App::import('Model', 'Registro');
+ App::import('Model', 'Cliente');
+ 
+ /*ALTER TABLE citas
+ADD FOREIGN KEY (ID_clientes)
+REFERENCES clientes(ID) */
  
 class CitasController extends AppController{
 	public $helpers = array('Html','Form');
@@ -21,9 +26,9 @@ class CitasController extends AppController{
            $this->User->save($this->request->data('Model.id'));
            $this->save($this->request->data($user->username));
            $this->set('user', $user->findById(1));*/
-             $registrar = new Registra();
-             $registrar->id_citas = 7;
-             $this->set('registrar',$registrar->find('all'));
+             $registro = new Registro();
+             $registro->id_citas = 7;
+             $this->set('registro',$registro->find('all'));
             
 	}
         
@@ -32,15 +37,26 @@ class CitasController extends AppController{
             $this->set('user', $user->findById($_GET['id']));                                 
             if ($this->request->is('post')) {
                 if ($this->Cita->save($this->request->data)) {
-                    $registrar = new Registra();
+                    $registro = new Registro();
                     $user = new User();
+                    $cliente = new Cliente();
                     $users = $user->findById($_GET['id']);
-                    $data = array('id_citas' => $this->Cita->id, 
-                        'id_users' => $users['User']['id'],
-                        'date_created' => date("Y-m-d H:i:s"),
-                        'rut' => $users['User']['rut']);
-                    $registrar->save($data);
-                    $this->Session->setFlash(__('Cita creada '));  
+                    $data_cliente = array('rut' =>$this->request->data['Cliente']['rut'], 
+                                    'name' => $this->request->data['Cliente']['name'],
+                                    'surname' => $this->request->data['Cliente']['surname'],
+                                    'address' => $this->request->data['Cliente']['address'],
+                                    'date_birth' => $this->request->data['Cliente']['date_birth'],
+                                    'id_citas' => $this->Cita->id,
+                                    'contact' => 0,
+                                  );
+                    $data_users = array(  'id_citas' => $this->Cita->id, 
+                                    'id_users' => $users['User']['id'],
+                                    'date_created' => date("Y-m-d H:i:s"),
+                                    'rut' => $users['User']['rut']  
+                                  );
+                    $registro->save($data_users);
+                    $cliente->save($data_cliente);
+                    $this->Session->setFlash(__('Cita Creada'));  
                     $this->redirect(array('controller' => 'citas', 'action' => 'calendar', '?' => array(
                     'id' => $_GET['id'])));   
                 }else {
@@ -61,9 +77,9 @@ class CitasController extends AppController{
         }
         
         public function delete(){
-            $registrar = new Registra();
-            $registrar->id_cita = $_GET['id'];
-            $registrar->delete();
+            $registro = new Registro();
+            $registro->id_cita = $_GET['id'];
+            $registro->delete();
             $this->Cita->id = $_GET['id'];
             $this->Cita->delete();
             $this->redirect(array('controller' => 'citas', 'action' => 'calendar', '?' => array(
@@ -76,12 +92,12 @@ class CitasController extends AppController{
         }
         
         public function feed($id){
-            $registrar = new Registra();
-            $registro = $registrar->find('all');
+            $registro = new Registro();
+            $registros = $registro->find('all');
             $calendars = $this->Cita->find('all');
             $rows = array();
             for ($a=0; $a < count($calendars) ; $a++){
-               if($registro[$a]['Registra']['id_users']==$id ){
+               if($registros[$a]['Registro']['id_users']==$id ){
                          $rows[] = array(
                         'id' => $calendars[$a]['Cita']['id'],
                         'title' => $calendars[$a]['Cita']['title'],
