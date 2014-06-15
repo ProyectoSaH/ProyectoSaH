@@ -4,12 +4,12 @@
 </head> 
 <body>
     <?php $role = $this->requestAction('Users/getRole');?>
-<h4>&nbsp Lista de Usuarios</h4>
+<h3>&nbsp Lista de Usuarios</h3>
 <div class="panel panel-default">
   <table class="table">
     <thead>
         <tr>
-            <th><?php echo $this->Form->checkbox('all', array('name' => 'CheckAll',  'id' => 'CheckAll')); ?></th>
+            <th><?php echo $this->Paginator->sort('N°');?>  </th>
             <th><?php echo $this->Paginator->sort('username', 'Nombre de usuario');?>  </th>
             <th><?php echo $this->Paginator->sort('email', 'Correo');?></th>
             <th><?php echo $this->Paginator->sort('created', 'Creado');?></th>
@@ -26,12 +26,12 @@
         <?php $count ++;?>
         <?php if($count % 2): echo '<tr>'; else: echo '<tr class="zebra">' ?>
         <?php endif; ?>
-            <td><?php echo $this->Form->checkbox('User.id.'.$user['User']['id']); ?></td>
-            <td><?php echo $this->Html->link( $user['User']['username']  ,   array('action'=>'edit', $user['User']['id']),array('escape' => false) );?></td>
-            <td><?php echo $user['User']['email']; ?></td>
+            <td><b><?php echo $count; ?></b></td>
+            <td><?php echo $this->Html->link( ucfirst($user['User']['username'])  ,   array('action'=>'view', $user['User']['id']),array('escape' => false) );?></td>
+            <td><?php echo ucfirst($user['User']['email']); ?></td>
             <td><?php echo $user['User']['created']; ?></td>
             <td><?php echo $user['User']['modified']; ?></td>
-            <td><?php echo $user['User']['role']; ?></td>
+            <td><?php echo ucfirst($user['User']['role']); ?></td>
             <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'citas', 'action' => 'calendar', '?' => array(
         'id' => $user['User']['id']))); ?></td>
             <td >
@@ -56,12 +56,12 @@
         <?php if($count % 2): echo '<tr>'; else: echo '<tr class="zebra">' ?>
         <?php endif; ?>
         <?php if($user['User']['role']!='admin'){?>
-            <td><?php echo $this->Form->checkbox('User.id.'.$user['User']['id']); ?></td>
-            <td><?php echo $this->Html->link( $user['User']['username']  ,   array('action'=>'edit', $user['User']['id']),array('escape' => false) );?></td>
-            <td><?php echo $user['User']['email']; ?></td>
+            <td><b><?php echo $count-1; ?></b></td>
+            <td><b><?php echo ucfirst($user['User']['username']);?></b></td>
+            <td><?php echo ucfirst($user['User']['email']); ?></td>
             <td><?php echo $user['User']['created']; ?></td>
             <td><?php echo $user['User']['modified']; ?></td>
-            <td><?php echo $user['User']['role']; ?></td>
+            <td><?php echo ucfirst($user['User']['role']); ?></td>
             <td><?php echo '&nbsp',$this->Html->link('Ver',array('controller' => 'citas', 'action' => 'calendar', '?' => array(
         'id' => $user['User']['id']))); ?></td>
         </tr>

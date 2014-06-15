@@ -49,13 +49,22 @@
       <br></br>
     </div>
       <div class="form-group">
+          <label for="inputEmail" class="col-sm-1 control-label">Registrador:</label>
+      <label for="inputUsername" class="col-sm-1 control-label ">&nbsp<?php echo ucfirst($this->requestAction('/users/getUsername'));?></label>
+      <?php echo $this->Form->hidden('recorder', array('value' => $this->requestAction('/users/getUsername')));?>
+      <div class="col-sm-3">
+      <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
+      </div>
+      <br>
+    </div>
+      <div class="form-group">
           <label for="inputEmail" class="col-sm-1 control-label">Encargado:</label>
       <label for="inputUsername" class="col-sm-1 control-label ">&nbsp<?php echo ucfirst($user['User']['username']);?></label>
       
       <div class="col-sm-3">
       <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
       </div>
-      <br></br>
+      <br>
     </div>
    
     <div class="form-group">
@@ -75,10 +84,10 @@
       <p>
         <?php echo $this->Form->error('User.email', null, array('class' => 'error ')); ?>
       </div>
-      <br></br>
+      <br>
     </div>
     <div class="form-group">
-      <label for="inputPassword" class="col-sm-1 control-label">&nbspFecha:</label>
+      <label for="inputPassword" class="col-sm-1 control-label">Fecha:</label>
       <label for="inputEmdail" class="col-sm-2 control-label"><?php echo $_GET['fecha']?></label>
        <br></br>
     </div>

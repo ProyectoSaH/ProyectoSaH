@@ -56,6 +56,9 @@ class UsersController extends AppController {
         $this->set(compact('users'));
         
     }
+    public function view($id){
+        $this->set('user', $this->User->findById($id));
+    }
      public function add() {
         if ($this->request->is('post')) {
             $this->User->create();

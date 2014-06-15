@@ -40,12 +40,6 @@
 <?php  echo $this->Form->create('Cita'); ?>
 <form class="form-horizontal" role="form">
   <div class= "container-fluid">
-       <div class="form-group">  
-           <h4> <label for="inputUsername" class="col-sm-1 control-label ">Encargado:</label>
-               <label for="inputUsername" class="col-sm-1 control-label ">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo ucfirst($user['User']['username']);?></label> </h4>
-
-     <br></br>
-    </div>
       <div class="form-group">  
       <label for="inputUsername" class="col-sm-1 control-label ">Titulo:</label>
       <div class="col-sm-3">
@@ -103,6 +97,7 @@
                     'value' => $cliente['Cliente']['name']
                 )); ?>
       </div>
+      <?php echo $this->Form->hidden('recorder', array('value' => $this->requestAction('/users/getUsername')));?>
       <div class="col-sm-3">
       <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
       </div>

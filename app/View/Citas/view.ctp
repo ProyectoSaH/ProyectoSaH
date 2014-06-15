@@ -2,10 +2,15 @@
     <legend> &nbsp&nbsp&nbsp&nbsp Datos De Cita </legend>
     <div class= "container-fluid">
         <div class="form-group">
-          <h4> <label class="col-sm-1 control-label">Encargado:</label></h4>
-          <h4> <label class="col-sm-1 control-label ">&nbsp&nbsp&nbsp<?php echo ucfirst($user['User']['username']);?></label></h4>
-          <br></br>
+          <label class="col-sm-1 control-label">Encargado:</label></h4>
+          <label class="control-label "><?php echo ucfirst($user['User']['username']);?></label>
+          <br>
         </div>
+        <div class="form-group">
+          <label class="col-sm-1 control-label">Registrador:</label>
+          <label class=" control-label"> <?php echo ucfirst($citas['Cita']['recorder']);?></label>
+        </div>
+        <legend>  </legend>
         <div class="form-group">
           <label class="col-sm-1 control-label">Título:</label>
           <label class=" control-label"> <?php echo ucfirst($citas['Cita']['title']);?></label>
