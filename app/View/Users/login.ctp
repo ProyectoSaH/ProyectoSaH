@@ -1,60 +1,65 @@
-<nav class="navbar navbar-default" role="navigation">
-          <div class="navbar-header">
+<html>
+    <head>
+        <style>
+            #posicion{float: right;
+            width:43%;
+            }
+        </style>
+    </head>    
+    <nav class="navbar navbar-default" role="navigation">
+          <div class="navbar-left">
+              <br>
               <?php echo $this->Html->image('prueba_90x80.png', array('alt' => 'S.A.H'))?>
           </div>
           <div class="navbar-form navbar-left">
+              <br>
               <ul class="nav nav-tabs">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#">Profile</a></li>
-                  <li><a href="#">Messages</a></li>
+                  <li class="active"><a href="#">Inicio</a></li>
+                  <li><a href="#">Perfil</a></li>
               </ul>
           </div>
-          <?php      
-              echo $this->Form->create('User',array(
+         
+           <div class="navbar-form" id="posicion" >
+               <br></br>
+           <?php  echo $this->Form->create('User',array(
                  'inputDefaults' => array(
-		 		 'label' => false,
-				 'wrapInput' => false,
+		 'label' => false,
+	         'wrapInput' => false,
                   )));
-         ?>
-        <div class="navbar-form  navbar-right" >
+           ?>
         	<div class="form-group ">
-        	<h4><span class="glyphicon glyphicon-user "></span></h4>
-        </div>
-            <div class="form-group ">
-
-                 <?php  echo $this->Form->input('username',array(
-                  'type' => 'alphanumeric',
-                  'placeholder' => 'Username',
-                  'class' => 'form-control',
-                  'label' => false
-              )); ?>
-            </div>
-            <div class="form-group">
+                    <h4><span class="glyphicon glyphicon-user "></span></h4>
+                </div>
+           <div class="form-group ">
+                <?php  echo $this->Form->input('username',array(
+                    'type' => 'alphanumeric',
+                    'placeholder' => 'Username',
+                    'class' => 'form-control',
+                    'label' => false
+                )); ?>
+          </div>
+          <div class="form-group">
                 <?php  echo $this->Form->input('password',array(
                   'type' => 'password',
                   'placeholder' => 'Password',
                   'class' => 'form-control',
                   'label' => false
                )); ?>
-            </div>
-            <div class="form-group">          
-              <button type="submit" class="btn btn-primary " id="login">Login</button>
-                <?php
-                echo $this->Form->end();
-                echo $this->Html->link(false ,array('action'=>'add'));
+           </div>
+           <div class="form-group ">          
+                <button type="submit" class="btn btn-primary " id="login">Login</button>
+                <?php echo $this->Form->end();
                 ?>
            </div> 
-                   </div>
-   
-</nav>
-<br>
-<br>
-	<script src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/coin-slider.js"></script>
-
-	<link rel="stylesheet" href="css/coin-slider-styles.css" type="text/css" />
-<body> 
-<div style="width:600px; margin:0 auto;">
+       </div>
+    </nav>
+    <br>
+    <br>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/coin-slider.js"></script>
+    <link rel="stylesheet" href="css/coin-slider-styles.css" type="text/css" />
+    <body> 
+            <div style="width:600px; margin:0 auto;">
 		<div id="games">
 
 			<a href="http://www.google.com/" target="_blank">
@@ -107,30 +112,28 @@
 			</a>
 
                 </div>
-                		<script>
-			$('#games').coinslider();
-		</script>
-</body>
-</div>
-<style>
+               <script>$('#games').coinslider();</script>
+          </div>
+    </body>
+    <style>
 
-#contenedor1 {
-    clear: both;
-    margin-bottom: 0em;
-    padding: .3em;
-    vertical-align: text-top;
-}
+    #contenedor1 {
+        clear: both;
+        margin-bottom: 0em;
+        padding: .3em;
+        vertical-align: text-top;
+    }
 
-#divElement{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-top: -120px;
-    margin-left: -40px;
+    #divElement{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-top: -120px;
+        margin-left: -40px;
 
-}​
-</style>
-
+    }​
+    </style>
+</html>
 
 		
 

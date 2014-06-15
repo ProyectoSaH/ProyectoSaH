@@ -2,40 +2,37 @@
  App::import('Model', 'User');
  App::import('Model', 'Registro');
  App::import('Model', 'Cliente');
-  
-
- /*
-  * 1234567 : 79c7919b65a06801bb77c060b1b9f2ab64439cb5
-  * ALTER TABLE citas*
-ADD FOREIGN KEY (ID_clientes)
-REFERENCES clientes(ID) */
+  /*
+   1234567 : 79c7919b65a06801bb77c060b1b9f2ab64439cb5
+   ALTER TABLE citas*
+   ADD FOREIGN KEY (ID_clientes)
+   REFERENCES clientes(ID) */
  
 class CitasController extends AppController{
-	public $helpers = array('Html','Form');
+	
+        public $helpers = array('Html','Form');
         public $components = array('RequestHandler');
         var $name = 'Citas';
         
-
-
-	public function index(){
+        public function index(){
           /*App::import('Model', 'User');
             $user = new User();    
             $user->id = '1';
             $this->set('user', $user->read());
             $this->set('user',$user->find('all'));
-           $user = new User();    
-           $user->findById(1);
-           $user->set('username',array('username' =>'dasasdsad'));
-           $this->User->save($this->request->data('Model.id'));
-           $this->save($this->request->data($user->username));
-           $this->set('user', $user->findById(1));*/
-             $registro = new Registro();
-             $registro->id_citas = 7;
-             $this->set('registro',$registro->find('all'));
+            $user = new User();    
+            $user->findById(1);
+            $user->set('username',array('username' =>'dasasdsad'));
+            $this->User->save($this->request->data('Model.id'));
+            $this->save($this->request->data($user->username));
+            $this->set('user', $user->findById(1));*/
+            $registro = new Registro();
+            $registro->id_citas = 7;
+            $this->set('registro',$registro->find('all'));
             
 	}
         
-        public function add(){
+        public function add(){ // Añade una Cita
             $user = new User();
             $this->set('user', $user->findById($_GET['id']));                                 
             if ($this->request->is('post')) {
@@ -68,7 +65,7 @@ class CitasController extends AppController{
             }
         }
         
-        public function view(){
+        public function view(){ // Ver el detaller de una cita
          $this->set('citas', $this->Cita->findById($_GET['id']));
          $user = new User();
          $this->set('user', $user->findById($_GET['idN']));
@@ -76,7 +73,7 @@ class CitasController extends AppController{
          $this->set('cliente',$cliente->findById_citas($_GET['id']));
         }
         
-	public function edit(){
+	public function edit(){ //Edita una cita
             $this->set('calendar', $this->Cita->findById($_GET['id']));
             $user = new User();
             $this->set('user', $user->findById($_GET['idN']));
@@ -103,33 +100,30 @@ class CitasController extends AppController{
                 }
              }
           }
-        
-        
+          
         public function prueba(){
             $rows = ['dsadas'];
-           Configure::write('debug', 0);
+            Configure::write('debug', 0);
             $this->autoRender = false;
             $this->autoLayout = false;
             $this->header('Content-Type: application/json');
             echo json_encode($rows); 
         }
         
-        public function delete(){
+        public function delete(){ // Elimina una cita 
             $this->Cita->id = $_GET['id'];
             $this->Cita->delete();
-            
-             
-            
+            $this->Session->setFlash(__('Cita Eliminada'));  
             $this->redirect(array('controller' => 'citas', 'action' => 'calendar', '?' => array(
             'id' => $_GET['idN']))); 
         }
         
-        public function calendar(){
+        public function calendar(){ // es el "index" 
             $user = new User();
             $this->set('user', $user->findById($_GET['id']));
         }
         
-        public function feed($id){
+        public function feed($id){ // Cargar eventos en el calendario
             $registro = new Registro();
             $registros = $registro->find('all');
             $calendars = $this->Cita->find('all');

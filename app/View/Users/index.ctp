@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head>		
 </head> 
 <body>
     <?php $role = $this->requestAction('Users/getRole');?>
-<h3>&nbsp Lista de Usuarios</h3>
+    <br>
+    <p class="bg-success"><legend>&nbsp Lista de Usuarios</legend></p>
 <div class="panel panel-default">
   <table class="table">
     <thead>
@@ -20,7 +21,7 @@
         </tr>
     </thead>
     <tbody> 
-         <?php if($role == 'admin'){ ?>
+        <?php if($role == 'admin'){ ?>
         <?php $count=0; ?>
         <?php foreach($users as $user): ?>                
         <?php $count ++;?>
@@ -39,15 +40,13 @@
             <?php
                 if( $user['User']['status'] != 0){ 
                     echo $this->Html->link(    "Delete", array('action'=>'delete', $user['User']['id']));}else{
-                   // echo $this->Html->link(    "Re-Activate", array('action'=>'activate', $user['User']['id']));
-                    }
+                }
             ?>
             </td>
         </tr>
         <?php endforeach; ?>
         <?php unset($user); ?>
         <?php } ?>
-        
         
         <?php if($role != 'admin'){ ?>
         <?php $count=0; ?>

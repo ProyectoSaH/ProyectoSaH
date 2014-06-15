@@ -1,5 +1,5 @@
 <html>
-    <legend> &nbsp&nbsp&nbsp&nbsp Datos De Cita </legend>
+   <p class="bg-success"><legend> &nbsp&nbsp&nbsp&nbsp Datos De Cita </legend></p>
     <div class= "container-fluid">
         <div class="form-group">
           <label class="col-sm-1 control-label">Encargado:</label></h4>
@@ -22,7 +22,7 @@
           <label class=" control-label"> <?php echo $citas['Cita']['end'];?> </label>
           <br></br>
         </div>
-        <legend> &nbsp&nbsp Datos Del Cliente </legend>
+        <p class="bg-info"><legend> &nbsp&nbsp Datos Del Cliente </legend></p>
         <div class="form-group">
           <label class="col-sm-1 control-label">Nombre(s):</label>
           <label class="col-sm-3 control-label "><?php echo ucfirst($cliente['Cliente']['name']);?></label>
@@ -51,12 +51,11 @@
          <div class="form-group">
           <label class="col-sm-1 control-label">N° De Contacto:</label>
           <label class="col-sm-2 control-label "><?php echo $cliente['Cliente']['contact'];?></label>
-          <br><br>
         </div>
+        <legend> </legend>
         <div class="form-group">
           <label class="col-sm-2 control-label"><?php echo '&nbsp',$this->Html->link('-> Regresar Al Calendario',array('controller' => 'citas', 'action' => 'calendar', '?' => array(
-        'id' => $user['User']['id']))); ?></label>
-          
+          'id' => $user['User']['id']))); ?></label>
           <br>
         </div>
     </div>

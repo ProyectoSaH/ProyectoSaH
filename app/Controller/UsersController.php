@@ -1,9 +1,16 @@
 <?php
 class UsersController extends AppController {
    public $helpers = array('Js' => array('Jquery'));
+   public $paginate = array(
+        'limit' => 25,
+        'conditions' => array('status' => '1'),
+        'order' => array('User.username' => 'asc' ) 
+   );
+   
     public function getUsername(){
         return $this->Auth->user('username');
     }
+    
     public function getRole(){
         return $this->Auth->user('role');
     }
@@ -12,25 +19,19 @@ class UsersController extends AppController {
         return $this->Session->check('Auth.User');
         
     }
-    public function getHola(){
-        return false;
-    }
-    public $paginate = array(
-        'limit' => 25,
-        'conditions' => array('status' => '1'),
-        'order' => array('User.username' => 'asc' ) 
-    );
-             
+    
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('login','add'); 
     }
-
+    
     public function login() {
         if($this->Session->check('Auth.User')){
             $this->redirect(array('action' => 'index')); 
           }
+         
         if ($this->request->is('post')) {
+             $this->request->data['User']['username'] = strtolower($this->request->data['User']['username']);
             if ($this->Auth->login()) {
                if($this->Auth->user('role')=='admin')$this->redirect($this->Auth->redirectUrl());
                else $this->redirect(array('controller' => 'citas', 'action' => 'calendar', '?' => array(
@@ -126,26 +127,6 @@ class UsersController extends AppController {
             $this->redirect(array('action'=>'index'));
         }
     }
-     
-    public function activate($id = null) {
-         
-        if (!$id) {
-            $this->Session->setFlash('Please provide a user id');
-            $this->redirect(array('action'=>'index'));
-        }
-         
-        $this->User->id = $id;
-        if (!$this->User->exists()) {
-            $this->Session->setFlash('Invalid user id provided');
-            $this->redirect(array('action'=>'index'));
-        }
-        if ($this->User->saveField('status', 1)) {
-            $this->Session->setFlash(__('User re-activated'));
-            $this->redirect(array('action' => 'index'));
-        }
-        $this->Session->setFlash(__('User was not re-activated'));
-        $this->redirect(array('action' => 'index'));
-    }
- 
+
 }
 ?>

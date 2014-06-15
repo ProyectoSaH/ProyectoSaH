@@ -142,11 +142,7 @@ class User extends AppModel {
             )
         )
     );
-     
-
-
-
-
+    
     function isUniqueUsername($check) {
  
         $username = $this->find(
