@@ -33,7 +33,7 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                if($this->Auth->user('role')=='admin')$this->redirect($this->Auth->redirectUrl());
-               else $this->redirect(array('controller' => 'calendars', 'action' => 'calendar', '?' => array(
+               else $this->redirect(array('controller' => 'citas', 'action' => 'calendar', '?' => array(
                 'id' => $this->Auth->user('id'),
                 'name' => $this->Auth->user('username'))));
                

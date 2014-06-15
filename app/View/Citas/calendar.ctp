@@ -34,7 +34,34 @@
                             var calendar = $('#calendar').fullCalendar(
 
                             {
+        /*                        eventMouseover: function(calEvent, jsEvent) {
+                                    var hola;
+            $.ajax({
+            url: '../citas/prueba',
+            type: "GET",
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+            }
+        }); 
+                                    var tooltip = '<div class="tooltipevent btn btn-default" data-toggle="tooltip" style="width:100px;height:100px;background:#ccc;position:absolute;z-index:10001;">' + hola + '</div>';
+                                    $("body").append(tooltip);
+                                    $(this).mouseover(function(e) {
+                                        $(this).css('z-index', 10000);
+                                        $('.tooltipevent').fadeIn('500');
+                                        $('.tooltipevent').fadeTo('10', 1.9);
+                                    }).mousemove(function(e) {
+                                        $('.tooltipevent').css('top', e.pageY + 10);
+                                        $('.tooltipevent').css('left', e.pageX + 20);
+                                    });
+                                },
 
+                                eventMouseout: function(calEvent, jsEvent) {
+                                    $(this).css('z-index', 8);
+                                    $('.tooltipevent').remove();
+                                },
+          */
                                 eventClick: function(calEvent, jsEvent, view) {
 
 
@@ -44,17 +71,18 @@
                        var temp = {
                                             state: {
                                                     title: 'Que operación desea hacer?',
-                                                    buttons: { Eliminar: false, Editar: true },
+                                                    buttons: { Eliminar: 0, Ver: 1, Editar: 2},
                                                     focus: 1,
                                                     submit:function(e,v,m,f){ 
-                                                            if(!v){
-                                                                      window.location = 'delete?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
+                                                            if(v==0){
+                                                              window.location = 'delete?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
                                                             }
-
-                                                            else {
-
-                                           window.location = 'edit?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
-                                    }
+                                                            if(v==1) {
+                                                              window.location = 'view?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
+                                                            }
+                                                            if(v==2) {
+                                                              window.location = 'edit?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
+                                                            }
                                                             return false; 
                                                     }
                                             },
@@ -128,6 +156,7 @@
                                                                                     title: title,
                                                                                     start: start,
                                                                                     end: end
+                                                                                    
 
                                                                             },
                                                                             true // make the event "stick"
