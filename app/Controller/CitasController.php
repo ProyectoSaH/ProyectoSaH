@@ -42,11 +42,12 @@ class CitasController extends AppController{
                 if ($this->Cita->save($this->request->data)) {
                   $this->redirect(array('controller' => 'clientes', 'action' => 'edit', '?' => array(
                     'id' => $clientes['Cliente']['id'] ))); 
-                }else{
+                }
+            }else{
                     $this->Session->setFlash(__('La hora o fecha inicial de la cita tiene que ser menor a la final'));  
                 }
+            
             }
-            }else{ }
  
             if (!$this->request->data) {
                 $this->request->data = $cita;

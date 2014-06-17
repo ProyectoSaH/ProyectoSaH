@@ -44,8 +44,11 @@
                                     'date_created' => date("Y-m-d H:i:s"),
                                     'rut' => $users['User']['rut']  
                                   );
+                    
                     $registro->save($data_users);
-                    $this->Session->setFlash(__('Cita Creada'));  
+                    $this->Cliente->query("UPDATE clientes SET id_citas = '".$cita->id."'"
+                                           ."WHERE id = '".$this->Cliente->id."';");
+                    $this->Session->setFlash(__($cita->id));  
                     $this->redirect(array('controller' => 'citas', 'action' => 'calendar', '?' => array(
                     'id' => $_GET['id'])));   
                 }else {
