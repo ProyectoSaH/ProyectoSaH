@@ -5,6 +5,16 @@ $cakeDescription = __d('cake_dev', 'SAH');
 ?>
 <!DOCTYPE html>
 <html>
+    
+    <style>#fancy {
+  width: 20px;
+  margin: 20px auto;
+  padding: 50px;
+  border: solid blue 10px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}</style>
     <head>  
          <?php echo $this->Html->Script('jquery'); ?>
 	 <?php echo $this->Html->charset(); ?>

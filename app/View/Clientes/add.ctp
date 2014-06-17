@@ -26,7 +26,7 @@
       </script>
     </head>
     <body>
-      <table> &nbsp&nbsp&nbsp&nbsp Registrar Cita </table>
+        <p class="bg-success"><legend> &nbsp&nbsp&nbsp&nbsp Registrar Cita </legend></p>
       <?php  echo $this->Form->create('Cita'); ?>
      <form class="form-horizontal" role="form">
         <div class= "container-fluid">
@@ -42,7 +42,7 @@
                      )); ?>
                 </div>
                 <div class="col-sm-3">
-                    <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
+                    <?php echo $this->Form->error('Cita.title', null, array('class' => 'error ')); ?>
                 </div>
                 <br></br>
            </div>
@@ -50,17 +50,11 @@
                 <label for="inputEmail" class="col-sm-1 control-label">Registrador:</label>
                 <label for="inputUsername" class="col-sm-1 control-label ">&nbsp<?php echo ucfirst($this->requestAction('/users/getUsername'));?></label>
                 <?php echo $this->Form->hidden('recorder', array('value' => $this->requestAction('/users/getUsername')));?>
-                <div class="col-sm-3">
-                     <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
-                </div>
                 <br>
            </div>
            <div class="form-group">
                 <label for="inputEmail" class="col-sm-1 control-label">Encargado:</label>
                 <label for="inputUsername" class="col-sm-1 control-label ">&nbsp<?php echo ucfirst($user['User']['username']);?></label>
-                <div class="col-sm-3">
-                    <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
-                </div>
                 <br>
           </div>
           <div class="form-group">
@@ -73,10 +67,6 @@
                 <?php echo $this->Form->hidden('start', array('value' =>  $_GET['fecha'].' '.$_GET['horainicial']));?>
                 <?php echo $this->Form->hidden('end', array('value' =>  $_GET['fecha'].' '.$_GET['horafinal']));}?>
                 <?php echo $this->Form->hidden('id_user', array('value' =>  $_GET['id']));?>
-                <div class="col-sm-2">
-                    <p>
-                    <?php echo $this->Form->error('User.email', null, array('class' => 'error ')); ?>
-                </div>
                 <br>
           </div>
           <div class="form-group">
@@ -84,7 +74,7 @@
                 <label for="inputEmdail" class="col-sm-2 control-label"><?php echo $_GET['fecha']?></label>
                 <br></br>
           </div>
-          <legend> &nbsp Registrar Datos Del Cliente </legend>
+            <p class="bg-info"> <legend> &nbsp Registrar Datos Del Cliente </legend></p>
           <br>
           <?php  echo $this->Form->create('Cliente'); ?>
           <div class="form-group">  
@@ -98,7 +88,7 @@
                                   )); ?>
                 </div>
                 <div class="col-sm-3">
-                     <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
+                     <?php echo $this->Form->error('Cliente.name', null, array('class' => 'error ')); ?>
                 </div>
                 <br></br>
           </div>
@@ -113,7 +103,7 @@
                             )); ?>
                 </div>
                 <div class="col-sm-3">
-                    <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
+                    <?php echo $this->Form->error('Cliente.surname', null, array('class' => 'error ')); ?>
                 </div>
                 <br></br>
           </div>
@@ -129,7 +119,7 @@
                           )); ?>
                 </div>
                 <div class="col-sm-3">
-                    <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
+                    <?php echo $this->Form->error('Cliente.rut', null, array('class' => 'error ')); ?>
                 </div>
                 <br></br>
           </div>
@@ -145,7 +135,7 @@
                           )); ?>
                 </div>
                 <div class="col-sm-3">
-                     <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
+                     <?php echo $this->Form->error('Cliente.date_birth', null, array('class' => 'error ')); ?>
                 </div>
                 <br></br>
           </div>
@@ -160,7 +150,7 @@
                           )); ?>
                 </div>
                 <div class="col-sm-3">
-                    <?php echo $this->Form->error('User.username', null, array('class' => 'error ')); ?>
+                    <?php echo $this->Form->error('Cliente.address', null, array('class' => 'error ')); ?>
                 </div>
                 <br></br>
           </div>
@@ -171,9 +161,13 @@
                 <label for="inputRole" class="col-lg-0">&nbsp&nbsp&nbsp</label>
                 <button type="submit" class="btn btn-primary " id="login">Enviar</button>
                 <?php echo $this->Form->end();?>
-          </div> 
+          </div>
+          <div class="form-group">
+          <label class="col-sm-3 control-label"><?php echo '&nbsp',$this->Html->link('-> Regresar Al Calendario',array('controller' => 'citas', 'action' => 'calendar', '?' => array(
+          'id' => $user['User']['id']))); ?></label>
+          <br>
+        </div>
         </div>       
     </form>
-      <?php echo $this->Html->link("Return Index",   array('controller' => 'Users','action'=>'index'),array('escape' => false) ); ?>
-  </body>
+      
 </html>

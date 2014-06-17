@@ -2,7 +2,7 @@
     <head>
         <style>
             #posicion{float: right;
-            width:43%;
+            width:45%;
             }
         </style>
     </head>    

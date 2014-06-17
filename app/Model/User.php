@@ -19,7 +19,7 @@ class User extends AppModel {
                 'message' => 'El Nombre De Usuario debe tener minimo de 5 a 15 caracteres'
             ),
              'unique' => array(
-                'rule'    => array('isUniqueUsername'),
+                'rule'    => 'isUnique',
                 'message' => 'El Nombre de usuario ingresado, ya está registrado'
             ),
             'alphaNumericDashUnderscore' => array(
@@ -79,7 +79,7 @@ class User extends AppModel {
                 'message' => 'El Rut Ingresado no es valido'
             ),
              'unique' => array(
-                'rule'    => array('isUniqueRut'),
+                'rule'    => 'isUnique',
                 'message' => 'El rut ingresado, ya está registrado'
             ),
 
@@ -111,7 +111,7 @@ class User extends AppModel {
                 'message' => 'El email debe ser valido.'   
             ),
              'unique' => array(
-                'rule'    => array('isUniqueEmail'),
+                'rule'    => 'isUnique',
                 'message' => 'El Email ya esta en uso.',
             ),
             'between' => array( 
@@ -216,7 +216,7 @@ class User extends AppModel {
         if(!empty($rut)){
             
 
-            if($this->data[$this->alias]['rut'] == $rut['User']['id']){
+            if($this->data[$this->alias]['id'] == $rut['User']['id']){
                 return true; 
             }else{
                 return false; 

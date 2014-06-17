@@ -1,5 +1,5 @@
 <html>
-    <legend> &nbsp&nbsp&nbsp&nbsp Datos Personales - <?php echo ucfirst($user['User']['username'])?></legend>
+    <p class="bg-success"><legend> &nbsp&nbsp&nbsp&nbsp Datos Personales - <?php echo ucfirst($user['User']['username'])?></legend></p>
     <div class= "container-fluid">
         <div class="form-group">
           <label class="col-sm-1 control-label">Nombre(s):</label>
@@ -29,7 +29,7 @@
         <div class="form-group">
           <label class="col-sm-1 control-label">Rol:</label>
           <label class=" control-label"> <?php echo ucfirst($user['User']['role'])?> </label>
-          <legend>&nbsp</legend>
+          <p class="bg-success">  <legend>&nbsp</legend> </p>
         </div>
         
         <div class="form-group">

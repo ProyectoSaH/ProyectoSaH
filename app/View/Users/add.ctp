@@ -27,7 +27,7 @@
          </script>
     </head>
     <body>
-        <legend> &nbsp Añadir Usuario </legend>
+        <p class="bg-success"> <legend> &nbsp Añadir Usuario </legend></p>
         <?php  echo $this->Form->create('User'); ?>
         <form class="form-horizontal" role="form">
         <div class= "container-fluid">
@@ -177,7 +177,7 @@
             <br></br>
             <label for="inputRole" class="col-sm-2 control-label">&nbsp</label>
             <div class="form-group">          
-                        <button type="submit" class="btn btn-primary " id="login">Login</button>
+                        <button type="submit" class="btn btn-primary " id="login">Confirmar</button>
                           <?php
                           echo $this->Form->end();
                           echo $this->Html->link(false ,array('action'=>'index'));

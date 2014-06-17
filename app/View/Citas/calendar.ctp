@@ -67,13 +67,13 @@
                                 eventClick: function(calEvent, jsEvent, view) {
                                             $(this).css('border-color', 'red');
                                             var temp = {
-                                                    state: {
+                                                    state0: {
                                                             title: 'Que operación desea hacer?',
                                                             buttons: { Eliminar: 0, Ver: 1, Editar: 2},
                                                             focus: 1,
                                                             submit:function(e,v,m,f){ 
                                                                     if(v==0){
-                                                                      window.location = 'delete?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
+                                                                        $.prompt.goToState('state1');
                                                                     }
                                                                     if(v==1) {
                                                                       window.location = 'view?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
@@ -84,6 +84,20 @@
                                                                     return false; 
                                                             }
                                                     },
+                                                state1: {
+						title: 'Estás Seguro De Elminar Esta Cita?',
+						buttons: { No: 0, Si: 1},
+						focus: 1,
+						submit:function(e,v,m,f){
+							if(v==0){
+						       $.prompt.close()
+                                                        }
+                                                        if(v==1){
+                                                       window.location = 'delete?id='+calEvent.id+'&idN='+<?php echo $user['User']['id'] ?>
+                                                       }
+							return false; 
+						}
+					    },
                                             }
                                             $.prompt(temp,{	
                                                     classes: {
@@ -130,7 +144,7 @@
                                                                             var end_min = end.minute();
                                                                             if(start.minute()== 0) start_min = "00";
                                                                             if(end.minute()== 0)   end_min =   "00"; 
-                                                                            window.location = 'add?title='+title+'&fecha='+start.year()+'-'+(start.month()+1)+'-'+start.date()+
+                                                                            window.location = '../clientes/add?title='+title+'&fecha='+start.year()+'-'+(start.month()+1)+'-'+start.date()+
                                                                                                 '&horainicial='+start.hours()+':'+start_min+'&horafinal='+
                                                                                                  end.hours()+':'+end_min+'&id='+<?php echo $_GET['id'];?>;  
                                                                 }

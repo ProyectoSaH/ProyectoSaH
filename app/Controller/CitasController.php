@@ -14,58 +14,14 @@ class CitasController extends AppController{
         public $components = array('RequestHandler');
         var $name = 'Citas';
         
-        public function index(){
-          /*App::import('Model', 'User');
-            $user = new User();    
-            $user->id = '1';
-            $this->set('user', $user->read());
-            $this->set('user',$user->find('all'));
-            $user = new User();    
-            $user->findById(1);
-            $user->set('username',array('username' =>'dasasdsad'));
-            $this->User->save($this->request->data('Model.id'));
-            $this->save($this->request->data($user->username));
-            $this->set('user', $user->findById(1));*/
+        public function index(){ // Función de prueba
             $registro = new Registro();
             $registro->id_citas = 7;
             $this->set('registro',$registro->find('all'));
             
 	}
         
-        public function add(){ // Añade una Cita
-            $user = new User();
-            $this->set('user', $user->findById($_GET['id']));                                 
-            if ($this->request->is('post')) {
-                if ($this->Cita->save($this->request->data)) {
-                    $registro = new Registro();
-                    $user = new User();
-                    $cliente = new Cliente();
-                    $users = $user->findById($_GET['id']);
-                    $data_cliente = array('rut' =>$this->request->data['Cliente']['rut'], 
-                                    'name' => $this->request->data['Cliente']['name'],
-                                    'surname' => $this->request->data['Cliente']['surname'],
-                                    'address' => $this->request->data['Cliente']['address'],
-                                    'date_birth' => $this->request->data['Cliente']['date_birth'],
-                                    'id_citas' => $this->Cita->id,
-                                    'contact' => 0,
-                                  );
-                    $data_users = array(  'id_citas' => $this->Cita->id, 
-                                    'id_users' => $users['User']['id'],
-                                    'date_created' => date("Y-m-d H:i:s"),
-                                    'rut' => $users['User']['rut']  
-                                  );
-                    $registro->save($data_users);
-                    $cliente->save($data_cliente);
-                    $this->Session->setFlash(__('Cita Creada'));  
-                    $this->redirect(array('controller' => 'citas', 'action' => 'calendar', '?' => array(
-                    'id' => $_GET['id'])));   
-                }else {
-                    $this->Session->setFlash(__('No se ha podido añadir la cita'));
-                }   
-            }
-        }
-        
-        public function view(){ // Ver el detaller de una cita
+        public function view(){ // Ver el detalle de una cita
          $this->set('citas', $this->Cita->findById($_GET['id']));
          $user = new User();
          $this->set('user', $user->findById($_GET['idN']));
@@ -73,35 +29,31 @@ class CitasController extends AppController{
          $this->set('cliente',$cliente->findById_citas($_GET['id']));
         }
         
-	public function edit(){ //Edita una cita
-            $this->set('calendar', $this->Cita->findById($_GET['id']));
+        public function edit() { // Editar Cita
+            $cliente = new Cliente();
+            $clientes = $cliente->findById_citas($_GET['id']);
             $user = new User();
             $this->set('user', $user->findById($_GET['idN']));
-            $cliente = new Cliente();
-            $this->set('cliente',$cliente->findById_citas($_GET['id']));
-            
-             if ($this->request->is('post')) {
-                 $this->Cita->id = $_GET['id'];
+            $this->set('calendar', $this->Cita->findById($_GET['id']));
+            $cita = $this->Cita->findById($_GET['id']);
+            if ($this->request->is('post') || $this->request->is('put')) {
+                $this->Cita->id = $_GET['id'];
+            if (strtotime($this->request->data['Cita']['start'])<strtotime($this->request->data['Cita']['end'])){    
                 if ($this->Cita->save($this->request->data)) {
-                    $cliente = new Cliente();
-                    $cliente->query("UPDATE clientes SET name = '".$this->request->data['Cliente']['name']."', "
-                                    ."surname= '".$this->request->data['Cliente']['surname']."',"
-                                    ."rut= '".$this->request->data['Cliente']['rut']."',"
-                                    ."address= '".$this->request->data['Cliente']['address']."',"
-                                    ."date_birth= '".$this->request->data['Cliente']['date_birth']."'"
-                                    ." WHERE id_citas = '".$_GET['id']."';");
-                    $cliente->save();
-                    $this->Session->setFlash(__('Cita Actualizada'));  
-                    $this->redirect(array('controller' => 'citas', 'action' => 'calendar', '?' => array(
-                    'id' => $_GET['idN'])));  
+                  $this->redirect(array('controller' => 'clientes', 'action' => 'edit', '?' => array(
+                    'id' => $clientes['Cliente']['id'] ))); 
+                }else{
+                    $this->Session->setFlash(__('La hora o fecha inicial de la cita tiene que ser menor a la final'));  
                 }
-                else{
-                    $this->Session->setFlash(__('No se ha podido actualizar cita'));  
-                }
-             }
-          }
+            }
+            }else{ }
+ 
+            if (!$this->request->data) {
+                $this->request->data = $cita;
+            }
+    }
           
-        public function prueba(){
+        public function prueba(){ // función de prueba
             $rows = ['dsadas'];
             Configure::write('debug', 0);
             $this->autoRender = false;
@@ -118,7 +70,7 @@ class CitasController extends AppController{
             'id' => $_GET['idN']))); 
         }
         
-        public function calendar(){ // es el "index" 
+        public function calendar(){ // es el "index", muestra el calendario con sus respectivas citas
             $user = new User();
             $this->set('user', $user->findById($_GET['id']));
         }
