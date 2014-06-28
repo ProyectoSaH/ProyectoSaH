@@ -54,8 +54,13 @@
         </div>
         <legend> </legend>
         <div class="form-group">
-          <label class="col-sm-2 control-label"><?php echo '&nbsp',$this->Html->link('-> Regresar Al Calendario',array('controller' => 'citas', 'action' => 'calendar', '?' => array(
-          'id' => $user['User']['id']))); ?></label>
+          <label class="col-sm-2 control-label"><?php echo '&nbsp', $this->Html->image('volver.jpg', array('height'=>'25' , 'width' => '25','url' => array('controller' => 'citas', 'action' => 'calendar', '?' => array(
+          'id' => $user['User']['id']))),array('escape' => false)).$this->Html->link("   Regresar",   array('controller' => 'citas', 'action' => 'calendar', '?' => array( 'id' => $user['User']['id'])),array('escape' => false) );
+          echo '<br><br>' ?></label>
+
+
+
+
           <br>
         </div>
     </div>

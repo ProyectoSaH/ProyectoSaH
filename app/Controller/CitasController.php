@@ -19,14 +19,14 @@ class CitasController extends AppController{
             $registro->id_citas = 7;
             $this->set('registro',$registro->find('all'));
             
-	}
+	   }
         
         public function view(){ // Ver el detalle de una cita
-         $this->set('citas', $this->Cita->findById($_GET['id']));
-         $user = new User();
-         $this->set('user', $user->findById($_GET['idN']));
-         $cliente = new Cliente();
-         $this->set('cliente',$cliente->findById_citas($_GET['id']));
+            $this->set('citas', $this->Cita->findById($_GET['id']));
+            $user = new User();
+            $this->set('user', $user->findById($_GET['idN']));
+            $cliente = new Cliente();
+            $this->set('cliente',$cliente->findById_citas($_GET['id']));
         }
         
         public function edit() { // Editar Cita
@@ -43,16 +43,14 @@ class CitasController extends AppController{
                   $this->redirect(array('controller' => 'clientes', 'action' => 'edit', '?' => array(
                     'id' => $clientes['Cliente']['id'] ))); 
                 }
-            }else{
-                    $this->Session->setFlash(__('La hora o fecha inicial de la cita tiene que ser menor a la final'));  
-                }
-            
             }
- 
+            else{ $this->Session->setFlash(__('La hora o fecha inicial de la cita tiene que ser menor a la final'));   
+            }
+            }
             if (!$this->request->data) {
                 $this->request->data = $cita;
             }
-    }
+        }
           
         public function prueba(){ // función de prueba
             $rows = ['dsadas'];
@@ -74,6 +72,8 @@ class CitasController extends AppController{
         public function calendar(){ // es el "index", muestra el calendario con sus respectivas citas
             $user = new User();
             $this->set('user', $user->findById($_GET['id']));
+
+            
         }
         
         public function feed($id){ // Cargar eventos en el calendario

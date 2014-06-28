@@ -23,7 +23,7 @@ class Cita extends AppModel{
 
              'unique' => array(
                 'rule'    => 'isUnique',
-                'message' => 'El Nombre de usuario ingresado, ya está registrado'
+                'message' => 'El Nombre de Usuario ingresado, ya está registrado'
             ),
 
         ),
@@ -36,7 +36,7 @@ class Cita extends AppModel{
 
              'unique' => array(
                 'rule'    => 'isUnique',
-                'message' => 'El Nombre de usuario ingresado, ya está registrado'
+                'message' => 'El Nombre de Usuario ingresado, ya está registrado'
             ),
 
         ),     

@@ -178,13 +178,18 @@
             <label for="inputRole" class="col-sm-2 control-label">&nbsp</label>
             <div class="form-group">          
                         <button type="submit" class="btn btn-primary " id="login">Confirmar</button>
+                          
+
                           <?php
                           echo $this->Form->end();
                           echo $this->Html->link(false ,array('action'=>'index'));
                           ?>
+
+                            <?php echo '<br>&nbsp', $this->Html->image('volver.jpg', array('height'=>'25' , 'width' => '25','url' => array('controller' => 'users', 'action' => 'index')),array('escape' => false)).$this->Html->link("   Regresar",   array('controller' => 'users', 'action'=>'index'),array('escape' => false) ); 
+     echo "<br><br>"; ?>
              </div>
          </div>     
     </form>
-    <?php echo $this->Html->link("Return Index",   array('action'=>'index'),array('escape' => false) ); ?>
+  
   </body>
 </html>

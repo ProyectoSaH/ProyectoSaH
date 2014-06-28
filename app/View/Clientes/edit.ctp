@@ -34,7 +34,16 @@
                                       });
                                       })
      </script> 
-          <p class="bg-info"><legend> &nbsp Editar Cliente  (<?php echo $clientes['Cliente']['id'];?>)</legend> </p>
+          <p class="bg-info"><legend> &nbsp Editar Cliente  (<?php 
+            
+
+            $registro = new Registro();
+            $registros = $registro->findById_citas($clientes['Cliente']['id_citas']);
+            $user = new User();
+            $users = $user->findById($registros['Registro']['id_users']);
+            
+
+            echo $clientes['Cliente']['id'];?>)</legend> </p>
         <br>
         <?php  echo $this->Form->create('Cliente'); ?>
         <?php echo $this->Form->hidden('id', array('value' => $_GET['id'])); ?>
@@ -119,14 +128,25 @@
         <div class="form-group">
             <label for="inputRole" class="col-lg-1"></label>
             <label for="inputRole" class="col-lg-0">&nbsp&nbsp&nbsp</label>
-            <button type="submit" class="btn btn-primary " id="login">Enviar</button>
+            <button type="submit" class="btn btn-primary " id="login">Confirmar</button>
+
+
             <?php echo $this->Form->end();?>
         </div>
         <legend></legend>
         <div class="form-group">
-             <label class="col-sm-3 control-label"><?php echo '&nbsp',$this->Html->link('-> Regresar Al Calendario',array('controller' => 'citas', 'action' => 'calendar', '?' => array(
-             'id' => $registro['Registro']['id_users']))); ?></label>
-             <br>
+             <label class="col-sm-3 control-label">
+
+            
+             <?php 
+echo '&nbsp', $this->Html->image('volver.jpg', array('height'=>'25' , 'width' => '25','url' => array('controller' => 'citas', 'action' => 'calendar', '?'=> array('id'=>  $registros['Registro']['id_users'] ))) ,array('escape' => false)).$this->Html->link("   Regresar al Calendario",   array('controller' => 'citas', 'action' => 'calendar', '?'=> array('id'=>  $users['User']['id'] ))); 
+
+
+             ?>
+<br>
+<br>
+             </label>
+            <br>
         </div>
     </div>
   </form>	

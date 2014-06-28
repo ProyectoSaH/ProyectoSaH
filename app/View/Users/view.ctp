@@ -41,8 +41,8 @@
         </div>
          <legend>&nbsp</legend>
         <div class="form-group">
-          <label class="col-sm-4 control-label"><?php echo '&nbsp',$this->Html->link('-> Regresar a ver otros usuarios'
-                  ,array('controller' => 'users', 'action' => 'index')); ?></label>
+          <label class="col-sm-4 control-label"><?php echo '&nbsp', $this->Html->image('volver.jpg', array('height'=>'25' , 'width' => '25','url' => array('controller' => 'users', 'action' => 'index')),array('escape' => false)).$this->Html->link("   Regresar",   array('controller' => 'users', 'action'=>'index'),array('escape' => false) );
+             echo "<br><br>";?></label>
           
           <br>
         </div>

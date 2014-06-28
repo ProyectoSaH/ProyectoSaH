@@ -159,12 +159,12 @@
           <div class="form-group">
                 <label for="inputRole" class="col-lg-1"></label>
                 <label for="inputRole" class="col-lg-0">&nbsp&nbsp&nbsp</label>
-                <button type="submit" class="btn btn-primary " id="login">Enviar</button>
+                <button type="submit" class="btn btn-primary " id="login">Confirmar</button>
                 <?php echo $this->Form->end();?>
           </div>
           <div class="form-group">
-          <label class="col-sm-3 control-label"><?php echo '&nbsp',$this->Html->link('-> Regresar Al Calendario',array('controller' => 'citas', 'action' => 'calendar', '?' => array(
-          'id' => $user['User']['id']))); ?></label>
+          <label class="col-sm-3 control-label"><?php echo '&nbsp', $this->Html->image('volver.jpg', array('height'=>'25' , 'width' => '25','url' => array('controller' => 'citas', 'action' => 'calendar', '?' => array(
+          'id' => $user['User']['id']))),array('escape' => false)).$this->Html->link("   Regresar",   array('controller' => 'citas', 'action' => 'calendar', '?' => array( 'id' => $user['User']['id'])),array('escape' => false) );?></label>
           <br>
         </div>
         </div>       

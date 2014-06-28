@@ -20,7 +20,7 @@ class User extends AppModel {
             ),
              'unique' => array(
                 'rule'    => 'isUnique',
-                'message' => 'El Nombre de usuario ingresado, ya está registrado'
+                'message' => 'El Nombre de UAsuario ingresado, ya está registrado'
             ),
             'alphaNumericDashUnderscore' => array(
                 'rule'    => array('alphaNumericDashUnderscore'),
@@ -70,7 +70,7 @@ class User extends AppModel {
         'rut' => array(
             'nonEmpty' => array(
                 'rule' => array('notEmpty'),
-                'message' => 'Se Requiere ingresar el rut de Usuario',
+                'message' => 'Se Requiere ingresar el Rut de Usuario',
                 'allowEmpty' => false
             ),
             'between' => array( 

@@ -1,22 +1,19 @@
 <html>
     <head>
         <style>
-            #posicion{float: right;
-            width:45%;
+            #posicion{
+            float: right;
+            width: 45%;
+           	
             }
+      
+
         </style>
     </head>    
     <nav class="navbar navbar-default" role="navigation">
           <div class="navbar-left">
               <br>
               <?php echo $this->Html->image('prueba_90x80.png', array('alt' => 'S.A.H'))?>
-          </div>
-          <div class="navbar-form navbar-left">
-              <br>
-              <ul class="nav nav-tabs">
-                  <li class="active"><a href="#">Inicio</a></li>
-                  <li><a href="#">Perfil</a></li>
-              </ul>
           </div>
          
            <div class="navbar-form" id="posicion" >
@@ -46,11 +43,12 @@
                   'label' => false
                )); ?>
            </div>
-           <div class="form-group ">          
-                <button type="submit" class="btn btn-primary " id="login">Login</button>
+     <div class="form-group ">          
+               <button type="submit" class="btn btn-primary " id="login">Login</button>
                 <?php echo $this->Form->end();
                 ?>
            </div> 
+
        </div>
     </nav>
     <br>

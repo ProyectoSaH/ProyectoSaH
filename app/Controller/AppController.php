@@ -48,6 +48,7 @@ class AppController extends Controller {
 public function beforeFilter() {
     $this->Auth->allow('login');
      $this->RequestHandler->setContent('json', 'text/x-json');
+     
 }
  
 public function isAuthorized($user) {
@@ -56,5 +57,4 @@ public function isAuthorized($user) {
     return true;
 }
 
- 
 }
