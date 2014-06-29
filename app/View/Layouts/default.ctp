@@ -108,6 +108,10 @@ $cakeDescription = __d('cake_dev', 'SAH');
                   'name' => $user_name)), array('title' => 'Historial','class' => 'shortcut-dashboard')); 
             ?>
             </li>
+            
+            <li class="<?php echo (!empty($this->params['action']) && ($this->params['action']=='profile') )?'active' :'inactive' ?>">
+							  <?php echo $this->Html->link('Perfil', array('controller'=>'users','action' => 'profile'), array('title' => 'perfil','class' => 'shortcut-dashboard'));?>
+						</li>
 
                         </ul>
                     </div>

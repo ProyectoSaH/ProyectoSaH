@@ -4,6 +4,9 @@
     public $paginate = array(  'limit' => 25,
                                'conditions' => array('status' => '1'),
                                'order' => array('User.username' => 'asc' ));
+    
+    //$this->Session->setFlash('Password changed successfully.', 'default',   
+    // array('class'=>'successMsg'));
    
     public function getUsername(){
         return $this->Auth->user('username');
@@ -115,6 +118,54 @@
             $this->Session->setFlash(__('No se puede Eliminar el Usuario en Sesion'));
             $this->redirect(array('action'=>'index'));
         }
+    }
+    
+    public function profile(){
+            $user = $this->User->findById($this->Auth->user('id'));
+        if (!$user) {
+            $this->Session->setFlash('ID Erronea');
+            $this->redirect(array('action'=>'index'));
+        }
+        if ($this->request->is('post') || $this->request->is('put')) {
+            $this->User->id = $this->Auth->user('id');
+
+
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('Se han actualizado los datos'));
+                $this->redirect(array('action' => 'profile'));
+            }else{
+                $this->Session->setFlash(__('No se ha podido actualizar los datos.'));
+            }
+        }
+ 
+        if (!$this->request->data) {
+            $this->request->data = $user;
+        }
+    
+    }
+    
+    public function change_password(){
+            $user = $this->User->findById($this->Auth->user('id'));
+        if (!$user) {
+            $this->Session->setFlash('ID Erronea');
+            $this->redirect(array('action'=>'index'));
+        }
+        if ($this->request->is('post') || $this->request->is('put')) {
+            $this->User->id = $this->Auth->user('id');
+
+
+            if ($this->User->save($this->request->data)) {
+                $this->Session->setFlash(__('Se han actualizado los datos'));
+                $this->redirect(array('action' => 'index'));
+            }else{
+                $this->Session->setFlash(__('No se ha podido actualizar los datos.'));
+            }
+        }
+ 
+        if (!$this->request->data) {
+            $this->request->data = $user;
+        }
+    
     }
 
     public function view_info(){

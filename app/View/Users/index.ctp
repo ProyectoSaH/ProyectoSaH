@@ -40,13 +40,7 @@
                 if( $user['User']['status'] != 0){ 
 
                   echo $this->Html->image('delete.png', array("alt" => "delete", 'height'=>'25' , 'width' => '25','url' => array('controller' => 'users', 'action' => 'delete',$user['User']['id'] )));}else{
-                }
-
-
-              
-
-  
-            ?>
+                }?>
             </td>
         </tr>
         <?php endforeach; ?>
@@ -74,39 +68,14 @@
         <?php unset($user); ?>
         <?php } ?>
 
-
-<tr>
-
-<td><?php echo $this->Paginator->numbers(array(   'class' => 'numbers'     ));
- echo "<br><br>  ";
- if($role =='admin') echo $this->Html->image('agregar.png', array('height'=>'25' , 'width' => '25','url' => array('controller' => 'users', 'action' => 'add')),array('escape' => false)).$this->Html->link("Añadir Empleado",   array('action'=>'add'),array('escape' => false) );
-
-    //echo $this->Html->link("Añadir Usuario",   array('action'=>'add'),array('escape' => false) ); ?>
-
-</td>
-
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>
-            
-
-</td>
-
-
-</tr>
-
-
-
-
-
-    </tbody>
+</tbody>
 </div>  
 </table>
+    
     </div>
-
+ <?php echo " &nbsp";
+ if($role =='admin') echo $this->Html->image('agregar.png', array('height'=>'25' , 'width' => '25','url' => array('controller' => 'users', 'action' => 'add')),array('escape' => false)).$this->Html->link("&nbspAñadir Empleado",   array('action'=>'add'),array('escape' => false) );
+?>
 
 
  

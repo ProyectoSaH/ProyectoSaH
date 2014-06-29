@@ -140,9 +140,18 @@ class User extends AppModel {
                 'message' => 'Both passwords must match.',
                 'required' => false,
             )
-        )
+        ),
+        'new_password' => array(
+        'rule' => 'checkCurrentPassword',
+        'message' => 'La contraseña ingresada, no coincide con la anterior.'
+    ),
     );
     
+    public function checkCurrentPassword($data) {
+    $this->id = AuthComponent::user('id');
+    $password = $this->field('password');
+    return(AuthComponent::password($data['new_password']) == $password);
+}
     function isUniqueUsername($check) {
  
         $username = $this->find(
@@ -251,6 +260,7 @@ class User extends AppModel {
      * @param array $options
      * @return boolean
      */
+    
      public function beforeSave($options = array()) {
         // hash our password
      

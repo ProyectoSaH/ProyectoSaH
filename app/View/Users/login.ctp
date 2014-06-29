@@ -30,7 +30,7 @@
            <div class="form-group ">
                 <?php  echo $this->Form->input('username',array(
                     'type' => 'alphanumeric',
-                    'placeholder' => 'Username',
+                    'placeholder' => 'Usuario',
                     'class' => 'form-control',
                     'label' => false
                 )); ?>
@@ -38,7 +38,7 @@
           <div class="form-group">
                 <?php  echo $this->Form->input('password',array(
                   'type' => 'password',
-                  'placeholder' => 'Password',
+                  'placeholder' => 'Contraseña',
                   'class' => 'form-control',
                   'label' => false
                )); ?>
