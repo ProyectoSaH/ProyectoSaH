@@ -82,6 +82,7 @@
                               'class' => 'form-control',
                               'type'=>'password',
                               'error' => false,
+                              'value' => false
                   )); ?>
                  </div>
                  <div class="col-sm-3">
