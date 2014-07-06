@@ -30,7 +30,32 @@
         public function add(){ // Añade una Cita
             $user = new User();
             $this->set('user', $user->findById($_GET['id']));                                 
-            
+            if(strtotime($_GET['fecha'].' '.$_GET['horafinal']) < strtotime(date("Y-m-d H:i:s"))){
+                $fecha = date("Y-m-d H:i:s");
+                $this->Session->setFlash(__('La Hora y/o Fecha de la cita es inferior a '.$fecha));
+                $this->redirect(array('controller' => 'citas', 'action' => 'calendar', '?' 
+                => array('id' => $_GET['id']))); 
+            }
+            /*
+             $registro = new Registro();
+             $citas = new Cita();
+             $registros = $registro->findById($_GET['id']);
+             for ($a=0; $a < count($registros) ; $a++){
+                 var_dump($registros[$a]['Registro']['id_citas']);
+die;
+                    $citas->id = (int) $registros[$a]['Registro']['id_citas'];
+                    if((strtotime($citas->start) <= strtotime($_GET['fecha'].' '.$_GET['horainicial'])&&
+                        strtotime($citas->end) <= strtotime($_GET['fecha'].' '.$_GET['horafinal'])) || 
+                       (strtotime($citas->start) >= strtotime($_GET['fecha'].' '.$_GET['horainicial'])&&
+                        strtotime($citas->end) >= strtotime($_GET['fecha'].' '.$_GET['horafinal']))){
+                $this->Session->setFlash(__('dsaasdadsLa Hora y/o Fecha de la cita es inferior a '));
+                $this->redirect(array('controller' => 'citas', 'action' => 'calendar', '?' 
+                => array('id' => $_GET['id']))); 
+                  break;      
+                }
+            }
+            */
+             
             if ($this->request->is('post')) {
                 if ($this->Cliente->save($this->request->data)) {
                     $user = new User();
