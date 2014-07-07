@@ -9,7 +9,7 @@ class Cita extends AppModel{
                 'allowEmpty' => false
             ),
             'between' => array( 
-                'rule' => array('between', 3, 15), 
+                'rule' => array('between', 3, 255), 
                 'required' => true, 
                 'message' => 'El Titulo debe tener minimo de 3 a 15 caracteres'
             ),

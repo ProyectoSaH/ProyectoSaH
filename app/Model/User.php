@@ -14,7 +14,7 @@ class User extends AppModel {
                 'allowEmpty' => false
             ),
             'between' => array( 
-                'rule' => array('between', 5, 15), 
+                'rule' => array('between', 3, 150), 
                 'required' => true, 
                 'message' => 'El Nombre De Usuario debe tener minimo de 5 a 15 caracteres'
             ),
@@ -34,7 +34,7 @@ class User extends AppModel {
                 'allowEmpty' => false
             ),
             'between' => array( 
-                'rule' => array('between', 5, 15), 
+                'rule' => array('between', 3, 150 ), 
                 'required' => true, 
                 'message' => 'Los Nombres deben tener minimo de 5 a 15 caracteres en total'
             ),
@@ -50,7 +50,7 @@ class User extends AppModel {
                 'allowEmpty' => false
             ),
             'between' => array( 
-                'rule' => array('between', 5, 15), 
+                'rule' => array('between', 3, 150), 
                 'required' => true, 
                 'message' => 'Los Apellidos deben tener minimo de 5 a 15 caracteres en total'
             ),
@@ -115,7 +115,7 @@ class User extends AppModel {
                 'message' => 'El Email ya esta en uso.',
             ),
             'between' => array( 
-                'rule' => array('between', 6, 60), 
+                'rule' => array('between', 3, 60), 
                 'message' => 'Usernames must be between 6 to 60 characters'
             )
         ),

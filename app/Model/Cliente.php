@@ -9,7 +9,7 @@ class Cliente extends AppModel{
                 'allowEmpty' => false
             ),
             'between' => array( 
-                'rule' => array('between',3, 30), 
+                'rule' => array('between',3, 150), 
                 'required' => true, 
                 'message' => 'El o los Nombres deben tener minimo de 3 a 30 caracteres'
             ),
@@ -33,7 +33,7 @@ class Cliente extends AppModel{
                 'allowEmpty' => false
             ),
              'between' => array( 
-                'rule' => array('between',3, 30), 
+                'rule' => array('between',3, 150), 
                 'required' => true, 
                 'message' => 'El o los Apellidos deben tener minimo de 3 a 30 caracteres'
             ),
