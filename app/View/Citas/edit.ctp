@@ -91,7 +91,7 @@
         <div class="form-group">
             <label for="inputRole" class="col-lg-1"></label>
             <label for="inputRole" class="col-lg-0">&nbsp&nbsp&nbsp</label>
-            <button type="submit" class="btn btn-primary " id="login">Confirmar</button>
+            <button type="submit" class="btn btn-primary " id="login">Siguiente</button>
             <?php echo $this->Form->end();?>
         </div>
         <legend></legend>
