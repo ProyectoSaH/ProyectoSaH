@@ -46,6 +46,20 @@
                 </div>
                 <br></br>
            </div>
+          <div class="form-group">
+                <label for="inputRole" class="col-sm-1 control-label">Centro Atencion</label>
+                <div class="col-sm-2">
+                     <?php  echo $this->Form->input('center', array(
+                        'class' => 'form-control',
+                        'label' => false,
+                        'options' => array( 
+                        'centro collao' => 'Centro Collao',
+                        'centro concepcion' => 'Centro Concepcion',
+                        'centro san pedro' => 'Centro San Pedro',    ))
+                      );?>
+                </div>
+        </div>
+            <br><br>
            <div class="form-group">
                 <label for="inputEmail" class="col-sm-1 control-label">Registrador:</label>
                 <label for="inputUsername" class="col-sm-1 control-label ">&nbsp<?php echo ucfirst($this->requestAction('/users/getUsername'));?></label>

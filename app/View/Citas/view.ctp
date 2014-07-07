@@ -17,6 +17,11 @@
           <br>
         </div>
         <div class="form-group">
+          <label class="col-sm-1 control-label">Centro de Atencion:</label>
+          <label class=" control-label"> <?php echo ucfirst($citas['Cita']['center']);?></label>
+          <br>
+        </div>
+        <div class="form-group">
           <label class="col-sm-1 control-label">Fecha Y Hora:</label>
           <label class=" control-label"> <?php echo $citas['Cita']['start'];?> - </label>
           <label class=" control-label"> <?php echo $citas['Cita']['end'];?> </label>

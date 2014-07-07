@@ -85,9 +85,23 @@
                 <div class="col-sm-3">
                            <?php echo $this->Form->error('Cita.end', null, array('class' => 'error ')); ?>
                     </div>
-               <br></br><br>
+               
         </div>
-     
+          <br><br>
+          <div class="form-group">
+                <label for="inputRole" class="col-sm-1 control-label">Centro Atencion</label>
+                <div class="col-sm-3">
+                     <?php  echo $this->Form->input('center', array(
+                        'class' => 'form-control',
+                        'label' => false,
+                        'options' => array( 
+                        'centro collao' => 'Centro Collao',
+                        'centro concepcion' => 'Centro Concepcion',
+                        'centro san pedro' => 'Centro San Pedro',    ))
+                      );?>
+                </div>
+        </div>
+     <br></br><br>
         <div class="form-group">
             <label for="inputRole" class="col-lg-1"></label>
             <label for="inputRole" class="col-lg-0">&nbsp&nbsp&nbsp</label>
