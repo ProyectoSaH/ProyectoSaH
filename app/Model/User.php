@@ -43,6 +43,38 @@ class User extends AppModel {
                 'message' => 'Username can only be letters, numbers and underscores'
             ),
         ),
+        'number' => array(
+            'nonEmpty' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Se Requiere ingresar Nombres ',
+                'allowEmpty' => false
+            ),
+            'between' => array( 
+                'rule' => array('between', 3, 150 ), 
+                'required' => true, 
+                'message' => 'Los Nombres deben tener minimo de 5 a 15 caracteres en total'
+            ),
+            'alphaNumericDashUnderscore' => array(
+                'rule'    => array('alphaNumericDashUnderscore'),
+                'message' => 'Username can only be letters, numbers and underscores'
+            ),
+        ),
+        'address' => array(
+            'nonEmpty' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Se Requiere ingresar Nombres ',
+                'allowEmpty' => false
+            ),
+            'between' => array( 
+                'rule' => array('between', 3, 150 ), 
+                'required' => true, 
+                'message' => 'Los Nombres deben tener minimo de 5 a 15 caracteres en total'
+            ),
+            'alphaNumericDashUnderscore' => array(
+                'rule'    => array('alphaNumericDashUnderscore'),
+                'message' => 'Username can only be letters, numbers and underscores'
+            ),
+        ),
         'surname' => array(
             'nonEmpty' => array(
                 'rule' => array('notEmpty'),

@@ -56,6 +56,18 @@ class Cliente extends AppModel{
                 'required' => true, 
                 'message' => 'La dirección debe tener un minimo de 3 a 60 caracteres'
             ), 
+         ),
+         'number' => array(
+            'nonEmpty' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'Se Requiere ingresar una Dirección',
+                'allowEmpty' => false
+            ),
+            'between' => array( 
+                'rule' => array('between',3, 60), 
+                'required' => true, 
+                'message' => 'La dirección debe tener un minimo de 3 a 60 caracteres'
+            ), 
          ),    
              );
 
