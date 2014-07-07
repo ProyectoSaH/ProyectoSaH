@@ -82,7 +82,7 @@
             <div class="form-group">
                 <label for="inputPassword" class="col-sm-1 control-label">N&deg Telefono:</label>
                 <div class="col-sm-3">
-                    <?php  echo $this->Form->input('number_phone',array(
+                    <?php  echo $this->Form->input('number',array(
                               'type' => 'alphanumeric',
                               'placeholder' => 'Numero de telefono o celular',
                               'class' => 'form-control',

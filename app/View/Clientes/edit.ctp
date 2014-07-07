@@ -122,7 +122,24 @@
             <div class="col-sm-3">
                  <?php echo $this->Form->error('Cliente.address', null, array('class' => 'error ')); ?>
             </div>
-            <br></br>
+            <br><br><br>
+             <div class="form-group">
+                <label for="inputPassword" class="col-sm-1 control-label">N&deg Telefono:</label>
+                <div class="col-sm-2">
+                    <?php  echo $this->Form->input('number',array(
+                              'type' => 'alphanumeric',
+                              'placeholder' => 'Numero de telefono o celular',
+                              'class' => 'form-control',
+                              'label' => false,
+                              'error' => false,
+                              'value' => false
+                          )); ?>
+                </div>
+                <div class="col-sm-3">
+                     <?php echo $this->Form->error('Cliente.number', null, array('class' => 'error ')); ?>
+                </div>
+            </div>
+            <br>
         </div>
         <br>
         <div class="form-group">

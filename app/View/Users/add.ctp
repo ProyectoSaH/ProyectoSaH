@@ -174,6 +174,41 @@
                       );?>
                 </div>
             </div>
+            <br><br>
+            <div class="form-group">
+                <label for="inputPassword" class="col-sm-1 control-label">N&deg Telefono:</label>
+                <div class="col-sm-3">
+                    <?php  echo $this->Form->input('number',array(
+                              'type' => 'alphanumeric',
+                              'placeholder' => 'Numero de telefono o celular',
+                              'class' => 'form-control',
+                              'label' => false,
+                              'error' => false,
+                              'value' => false
+                          )); ?>
+                </div>
+                <div class="col-sm-3">
+                     <?php echo $this->Form->error('User.number', null, array('class' => 'error ')); ?>
+                </div>
+                <br></br>
+            </div>
+            <div class="form-group">
+                <label for="inputpasswordConfirm" class="col-sm-1 control-label">Direccion</label>
+                <div class="col-sm-3">
+                    <?php  echo $this->Form->input('address', array(
+                              'maxLength' => 255, 
+                              'label' => false,
+                              'placeholder' => 'Direccion',
+                              'class' => 'form-control',
+                              'type'=>'alphanumeric',
+                              'error' => false,
+                  )); ?>
+                 </div>
+                 <div class="col-sm-3">
+                         <?php echo $this->Form->error('User.address', null, array('class' => 'error ')); ?>
+                 </div>
+                 <br></br>
+            </div>
             <br></br>
             <label for="inputRole" class="col-sm-2 control-label">&nbsp</label>
             <div class="form-group">          
